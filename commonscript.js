@@ -732,3 +732,124 @@ function ConfigPatternDuration() {
 	rhythmoverride = (patterncellsize > 1) ? (1, eval)("rhythm" + patterncellsize + "cell") : null;
 	console.log("Rhythm override", "rhythm" + patterncellsize + "cell = ", rhythmoverride);
 }
+
+function ShowNotes() {
+	if (!notesShown) {
+	notesShown = true;
+	var patterntable = document.getElementById("patterntable");
+	patterntable.rows[0].deleteCell(0);
+	var patternnum = 0;
+		for (var rownum = 0; rownum < (pattern.length / 7); rownum += 1) {
+	  	patterntable.insertRow(rownum);
+			for (var i=0; i < 7; i += 1) {
+		  	if (patternnum < pattern.length) {
+					patternnum += 1;
+					patterntable.rows[rownum].insertCell(i);
+					patterntable.rows[rownum].cells[i].innerHTML = "<button style='font-family: arial; font-size: 25px; font-weight: bold; color: blue; border:none; padding: 4px 4px; margin: 0px 0px;' onclick='PlayTab(" + (patternnum - 1) + ")'>" + patternnum + "</button>";
+		  	}
+  		}
+  	}
+	}
+}
+
+function UpdateConfig() {
+	if (window.DisplayTab) {
+		DisplayTab();
+	}
+	if (window.SetBPM) {
+		SetBPM(startbpm);	
+		console.log("Set BPM", bpm);	
+	}
+}
+
+function DisplaySettings() {
+  var settingsdialog = document.getElementById("settingsdialogfield");
+	settingsdialog.showModal();
+	console.log("Display Settings Popup");
+}
+
+function SaveSettings() {
+  var settingsdialog = document.getElementById("settingsdialogfield");
+	settingsdialog.close();
+	console.log("Saved Settings");
+}
+
+function InitBack() {
+var patterntable = document.getElementById("patternnotestable");
+var startingstringfield = document.getElementById("startingstringfield");
+var startingfretfield = document.getElementById("startingfretfield");
+var startingscaledegreefield = document.getElementById("startingscaledegreefield");
+startingscaledegreefield.innerHTML = (patternscaledegree > 0) ? patternscaledegree : 1;
+startingstringfield.innerHTML = patternnotes[0][3];
+startingfretfield.innerHTML = patternnotes[0][4];
+
+var patternnum = 0;
+	for (var rownum = 0; rownum < (pattern.length / 7); rownum += 1) {
+	  patterntable.insertRow(rownum);
+		for (var i=0; i < 7; i += 1) {
+		  if (patternnum < pattern.length) {
+				patternnum += 1;
+				patterntable.rows[rownum].insertCell(i);
+ 			  patterntable.rows[rownum].cells[i].innerHTML = "<button style='font-family: arial; font-size: 18px; font-weight: bold; color: blue; border:none; padding: 4px 4px; margin: 0px 0px;' onclick='PlayTab(" + (patternnum - 1) + ")'>" + patternnotes[patternnum - 1][2] + "<sup>" + patternnotes[patternnum - 1][0] + "</sup></button>";
+		  }
+  	}
+  }
+console.log("Notes Shown");
+
+console.log("Back Script");
+DisplayTab();
+}
+
+function DisplayTab() {
+var fontsize = tabfontsize + "px";
+console.log("Display Tab");
+
+var tabtable1 = document.getElementById("scaletab1");
+var tabtable2 = document.getElementById("scaletab2");
+var tabstrings = ["E", "B", "G", "D", "A", "E"];
+
+if (tabtable1 != null) {
+	while(tabtable1.rows.length > 0) {
+  	tabtable1.deleteRow(0);
+	}
+	while(tabtable2.rows.length > 0) {
+  	tabtable2.deleteRow(0);
+	}
+
+	for (var i = 0; i < 6; i++) {
+  	    row = tabtable1.insertRow(i);
+				cell = row.insertCell(0);
+				cell.style.fontSize = fontsize;
+				cell.innerHTML = tabstrings[i] + "|";
+
+  	    row = tabtable2.insertRow(i);
+				cell = row.insertCell(0);
+				cell.style.fontSize = fontsize;
+				cell.innerHTML = tabstrings[i] + "|";
+
+	}
+
+  for (var r = 0; r < 6; r += 1) {
+		tabtable1.rows[r].cells[0].style.fontSize = fontsize;
+		for (var c=1; c < pattern.length + 1; c += 1) {
+			cell = tabtable1.rows[r].insertCell(c);
+			cell.style.fontSize = fontsize;
+			cell.innerHTML = '-';
+			cell = tabtable2.rows[r].insertCell(c);
+			cell.style.fontSize = fontsize;
+			cell.innerHTML = '-';
+		}
+	}
+
+	for (var c=1; c < pattern.length + 1; c += 1) {
+		var notenum = patternnotes[c-1][0] - 1 + scalestartindex;
+		var note = patternnotes[c-1][2];
+		var rownum = patternnotes[c-1][3] - 1;
+		var tabposfretval = patternnotes[c-1][4]; 
+		tabtable1.rows[rownum].cells[c].innerHTML = tabposfretval + "<sup>" + note + "</sup><sub>"; 
+		tabtable2.rows[rownum].cells[pattern.length + 1 - c].innerHTML = tabposfretval + "<sup>" + note + "</sup>";  
+	}
+}
+}
+
+
