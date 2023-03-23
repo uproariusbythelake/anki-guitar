@@ -28,11 +28,6 @@ var configitems = [
 {key:"rhythm12cell", 		fieldname: "rhythm12cellfield",			fieldlabel: "12-Cell Rhythm", 				fieldtype: "text", 		  value: "[]"},
 ]; 
 
-var deckprefix = deckname + "/";
-var configprefix = deckprefix;
-var cardconfigprefix = deckname + "/" + patternid + "/" + cardtype + "/";
-InitConfig();
-
 function InitConfig(cardscope) {
 	if (cardscope == null) {
 		if (localStorage.getItem(cardconfigprefix + "cardsettings") != null) {
