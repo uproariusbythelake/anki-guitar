@@ -151,7 +151,7 @@ else {
 		} 
 }
  
-ConfigPatternDuration(); 
+//ConfigPatternDuration(); 
 
 for (i=0; i < pattern.length; i += 1) {
 		var tempnotearr = getNoteWithAccidentals(i);
