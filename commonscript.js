@@ -49,6 +49,151 @@ var synthstarted;
 var audioplaying;
 var timeout;
 var ramploopcounter;
+var deckprefix;
+var configprefix;
+var cardconfigprefix;
+var patternscaledegree;
+
+function InitFront(scaledegree=0) {
+patternscaledegree = scaledegree;
+testfield = document.getElementById("testfield");
+deckname = document.getElementById("decknamefield").innerHTML;
+cardtype = document.getElementById("cardtypefield").innerHTML;
+patternid = document.getElementById("patternidfield").innerHTML; 
+deckprefix = deckname + "/";
+configprefix = deckprefix;
+cardconfigprefix = deckname + "/" + patternid + "/" + cardtype + "/";
+
+InitConfig();
+
+bpmfield = document.getElementById("bpmfield");
+bpmvaluefield = document.getElementById("bpmvaluefield");
+scale = document.getElementById("scalenotesfield").innerHTML.trim().split(" ");
+pattern = document.getElementById("patternnotesfield").innerHTML.trim().split(" ");
+patternrepeatsfield = document.getElementById("patternrepeatsfield");
+patternrepeats = (patternrepeatsfield.innerHTML === "true") ? true : false;
+console.log("Pattern repeats ", patternrepeats);
+patterncellsize = document.getElementById("patterncellsizefield").innerHTML;
+if ((patterncellsize == "") || (patterncellsize == 0)) {
+	patterncellsize = 1;
+}
+ConfigPatternDuration(); 
+
+bpm = 10;
+beatsecs = 60/bpm;
+SetBPM(startbpm);
+
+notesShown = false;
+
+
+scalestartindex = document.getElementById("scalestartindexfield").innerHTML;
+if ((scalestartindex == "") || (scalestartindex == 0)) {
+	scalestartindex = 0;
+}
+else {
+	scalestartindex = scalestartindex - 1;
+}
+
+scalenotes = {};
+patternnotes = {};
+
+for (i=0; i < scale.length; i++) {
+	scalenotes[i] = scale[i].split(":");
+}
+
+for (i=0; i < pattern.length; i++) {
+	patternnotes[i] = pattern[i].split(":");
+}
+
+patternsize = pattern.length;
+
+if (patternscaledegree > 0) {
+	startwait = 0;
+	if (patternrepeats) {
+		for (j=0; j < patternsize; j += 1) {
+			var newnote = Number(patternnotes[j][0]) + (patternscaledegree - 1);
+			var newduration = patternnotes[j][1];
+			newnotetxt =  newnote + ":" + newduration;
+			pattern[j] = newnotetxt;
+			patternnotes[j] = newnotetxt.split(":");
+		}
+	}
+	else {
+		if ((patternid == "") || (patternid == "0")) {
+			var newnote = Number(patternnotes[0][0]) + (patternscaledegree - 1);
+			var newduration = patternnotes[newnote - 1][1];
+			newnotetxt =  newnote + ":" + newduration;
+			pattern = [newnotetxt];
+			patternnotes = [[newnote, newduration]];
+		}
+	}
+}
+else {
+		var newpatternsize = pattern.length; 
+		if (patternrepeats) {
+				for (i=1; i < 8; i += 1) {
+					for (j=0; j < patternsize; j += 1) {
+						var newnote = Number(patternnotes[newpatternsize - patternsize][0]) + 1;
+						var newduration = patternnotes[j][1];
+						newnotetxt =  newnote + ":" + newduration;
+						pattern[newpatternsize] = newnotetxt;
+						patternnotes[newpatternsize] = newnotetxt.split(":");
+						newpatternsize += 1;
+					}
+				}
+		} 
+}
+ 
+for (i=0; i < pattern.length; i += 1) {
+		var tempnotearr = getNoteWithAccidentals(i);
+
+		// Determine note beat duration
+		var beatduration = 1;
+		switch (tempnotearr[1]) {
+			case "1n":		beatduration = 4; break;
+			case "2n":		beatduration = 2; break;
+			case "2n.":	beatduration = 3; break;
+			case "4n":		beatduration = 1; break;
+			case "4n.":	beatduration = 1.5; break;
+			case "4t":		beatduration = .66667; break;
+			case "4t.":	beatduration = 1; break;
+			case "8n":		beatduration = .5; break;
+			case "8n.":	beatduration = .75; break;
+			case "8t":		beatduration = .33334; break;
+			case "8t.":	beatduration = .5; break;
+			case "16n":	beatduration = .25; break;
+			case "16n.":	beatduration = .375; break;
+			case "16t":	beatduration = .16667; break;
+			case "16t.":	beatduration = .25; break;
+			case "32n":	beatduration = .125; break;
+			case "32n.":	beatduration = .1875; break;
+			case "32t":	beatduration = .08334; break;
+			case "32t.":	beatduration = .125; break;
+			default:			beatduration = 1;
+		}
+		patternnotes[i] = [tempnotearr[4], tempnotearr[1], tempnotearr[0], tempnotearr[2], tempnotearr[3], beatduration];
+		console.log ("Pattern Note: ", patternnotes[i]);  
+}
+
+synthstarted = false; 
+audioplaying = false;
+timeout;
+ramploopcounter=-1;
+
+if (window.synth !== undefined) {
+	if (synth != null) {
+			synth.disconnect();
+			console.log("Disconnected synth");
+	}
+}
+
+console.log("Checking autoplay", autoplay);
+if ((autoplay) && (document.getElementById("answer") == null)){
+	console.log("Autoplaying");
+	TogglePlayButton(true);
+	PlayTab();
+}
+}
 
 function InitConfig(cardscope) {
 	testfield.innerHTML = "Initializing config";
@@ -614,140 +759,6 @@ function PlayTab(notenum=null, waitforstart=true) {
 			synth.triggerAttackRelease(patternnotes[notenum][2], patternnotes[notenum][1], now);
 	}
 	synth.sync();
-}
-
-function InitFront() {
-testfield = document.getElementById("testfield");
-deckname = document.getElementById("decknamefield").innerHTML;
-cardtype = document.getElementById("cardtypefield").innerHTML;
-patternid = document.getElementById("patternidfield").innerHTML; 
-bpmfield = document.getElementById("bpmfield");
-bpmvaluefield = document.getElementById("bpmvaluefield");
-scale = document.getElementById("scalenotesfield").innerHTML.trim().split(" ");
-pattern = document.getElementById("patternnotesfield").innerHTML.trim().split(" ");
-patternrepeatsfield = document.getElementById("patternrepeatsfield");
-patternrepeats = (patternrepeatsfield.innerHTML === "true") ? true : false;
-console.log("Pattern repeats ", patternrepeats);
-patterncellsize = document.getElementById("patterncellsizefield").innerHTML;
-if ((patterncellsize == "") || (patterncellsize == 0)) {
-	patterncellsize = 1;
-}
-ConfigPatternDuration(); 
-
-bpm = 10;
-beatsecs = 60/bpm;
-SetBPM(startbpm);
-
-notesShown = false;
-
-
-scalestartindex = document.getElementById("scalestartindexfield").innerHTML;
-if ((scalestartindex == "") || (scalestartindex == 0)) {
-	scalestartindex = 0;
-}
-else {
-	scalestartindex = scalestartindex - 1;
-}
-
-scalenotes = {};
-patternnotes = {};
-
-for (i=0; i < scale.length; i++) {
-	scalenotes[i] = scale[i].split(":");
-}
-
-for (i=0; i < pattern.length; i++) {
-	patternnotes[i] = pattern[i].split(":");
-}
-
-patternsize = pattern.length;
-
-if (patternscaledegree > 0) {
-	startwait = 0;
-	if (patternrepeats) {
-		for (j=0; j < patternsize; j += 1) {
-			var newnote = Number(patternnotes[j][0]) + (patternscaledegree - 1);
-			var newduration = patternnotes[j][1];
-			newnotetxt =  newnote + ":" + newduration;
-			pattern[j] = newnotetxt;
-			patternnotes[j] = newnotetxt.split(":");
-		}
-	}
-	else {
-		if ((patternid == "") || (patternid == "0")) {
-			var newnote = Number(patternnotes[0][0]) + (patternscaledegree - 1);
-			var newduration = patternnotes[newnote - 1][1];
-			newnotetxt =  newnote + ":" + newduration;
-			pattern = [newnotetxt];
-			patternnotes = [[newnote, newduration]];
-		}
-	}
-}
-else {
-		var newpatternsize = pattern.length; 
-		if (patternrepeats) {
-				for (i=1; i < 8; i += 1) {
-					for (j=0; j < patternsize; j += 1) {
-						var newnote = Number(patternnotes[newpatternsize - patternsize][0]) + 1;
-						var newduration = patternnotes[j][1];
-						newnotetxt =  newnote + ":" + newduration;
-						pattern[newpatternsize] = newnotetxt;
-						patternnotes[newpatternsize] = newnotetxt.split(":");
-						newpatternsize += 1;
-					}
-				}
-		} 
-}
- 
-for (i=0; i < pattern.length; i += 1) {
-		var tempnotearr = getNoteWithAccidentals(i);
-
-		// Determine note beat duration
-		var beatduration = 1;
-		switch (tempnotearr[1]) {
-			case "1n":		beatduration = 4; break;
-			case "2n":		beatduration = 2; break;
-			case "2n.":	beatduration = 3; break;
-			case "4n":		beatduration = 1; break;
-			case "4n.":	beatduration = 1.5; break;
-			case "4t":		beatduration = .66667; break;
-			case "4t.":	beatduration = 1; break;
-			case "8n":		beatduration = .5; break;
-			case "8n.":	beatduration = .75; break;
-			case "8t":		beatduration = .33334; break;
-			case "8t.":	beatduration = .5; break;
-			case "16n":	beatduration = .25; break;
-			case "16n.":	beatduration = .375; break;
-			case "16t":	beatduration = .16667; break;
-			case "16t.":	beatduration = .25; break;
-			case "32n":	beatduration = .125; break;
-			case "32n.":	beatduration = .1875; break;
-			case "32t":	beatduration = .08334; break;
-			case "32t.":	beatduration = .125; break;
-			default:			beatduration = 1;
-		}
-		patternnotes[i] = [tempnotearr[4], tempnotearr[1], tempnotearr[0], tempnotearr[2], tempnotearr[3], beatduration];
-		console.log ("Pattern Note: ", patternnotes[i]);  
-}
-
-synthstarted = false; 
-audioplaying = false;
-timeout;
-ramploopcounter=-1;
-
-if (window.synth !== undefined) {
-	if (synth != null) {
-			synth.disconnect();
-			console.log("Disconnected synth");
-	}
-}
-
-console.log("Checking autoplay", autoplay);
-if ((autoplay) && (document.getElementById("answer") == null)){
-	console.log("Autoplaying");
-	TogglePlayButton(true);
-	PlayTab();
-}
 }
 
 function ConfigPatternDuration() {
