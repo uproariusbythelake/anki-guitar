@@ -1,8 +1,3 @@
-var testfield = document.getElementById("testfield");
-var deckname = document.getElementById("decknamefield").innerHTML;
-var cardtype = document.getElementById("cardtypefield").innerHTML;
-var patternid = document.getElementById("patternidfield").innerHTML; 
-
 var configitems = [ 
 {key:"cardsettings",		fieldname: "cardsettingsfield", 			fieldlabel: "Card Settings", 				fieldtype: "checkbox", 	value: "false"},
 {key:"startbpm", 				fieldname: "startbpmfield", 					fieldlabel: "Start BPM", 							fieldtype: "range", 		value: 85, 	step: 5, min: 10, max: 1000},
@@ -28,9 +23,32 @@ var configitems = [
 {key:"rhythm12cell", 		fieldname: "rhythm12cellfield",			fieldlabel: "12-Cell Rhythm", 				fieldtype: "text", 		  value: "[]"},
 ]; 
 
-var deckprefix = deckname + "/";
-var configprefix = deckprefix;
-var cardconfigprefix = deckname + "/" + patternid + "/" + cardtype + "/";
+var testfield;
+var deckname;
+var cardtype;
+var patternid;
+var deckprefix;
+var configprefix;
+var cardconfigprefix;
+var bpmfield;
+var bpmvaluefield;
+var scale;
+var pattern;
+var patternrepeatsfield;
+var patternrepeats;
+var patterncellsize;
+var bpm;
+var beatsecs;
+var notesShown;
+var scalestartindex;
+var scalenotes;
+var patternnotes;
+var patternsize;
+var startwait;
+var synthstarted; 
+var audioplaying;
+var timeout;
+var ramploopcounter;
 
 function InitConfig(cardscope) {
 	testfield.innerHTML = "Initializing config";
@@ -599,27 +617,31 @@ function PlayTab(notenum=null, waitforstart=true) {
 }
 
 function InitFront() {
-var bpmfield = document.getElementById("bpmfield");
-var bpmvaluefield = document.getElementById("bpmvaluefield");
-var scale = document.getElementById("scalenotesfield").innerHTML.trim().split(" ");
-var pattern = document.getElementById("patternnotesfield").innerHTML.trim().split(" ");
-var patternrepeatsfield = document.getElementById("patternrepeatsfield");
-var patternrepeats = (patternrepeatsfield.innerHTML === "true") ? true : false;
+testfield = document.getElementById("testfield");
+deckname = document.getElementById("decknamefield").innerHTML;
+cardtype = document.getElementById("cardtypefield").innerHTML;
+patternid = document.getElementById("patternidfield").innerHTML; 
+bpmfield = document.getElementById("bpmfield");
+bpmvaluefield = document.getElementById("bpmvaluefield");
+scale = document.getElementById("scalenotesfield").innerHTML.trim().split(" ");
+pattern = document.getElementById("patternnotesfield").innerHTML.trim().split(" ");
+patternrepeatsfield = document.getElementById("patternrepeatsfield");
+patternrepeats = (patternrepeatsfield.innerHTML === "true") ? true : false;
 console.log("Pattern repeats ", patternrepeats);
-var patterncellsize = document.getElementById("patterncellsizefield").innerHTML;
+patterncellsize = document.getElementById("patterncellsizefield").innerHTML;
 if ((patterncellsize == "") || (patterncellsize == 0)) {
 	patterncellsize = 1;
 }
 ConfigPatternDuration(); 
 
-var bpm = 10;
-var beatsecs = 60/bpm;
+bpm = 10;
+beatsecs = 60/bpm;
 SetBPM(startbpm);
 
-var notesShown = false;
+notesShown = false;
 
 
-var scalestartindex = document.getElementById("scalestartindexfield").innerHTML;
+scalestartindex = document.getElementById("scalestartindexfield").innerHTML;
 if ((scalestartindex == "") || (scalestartindex == 0)) {
 	scalestartindex = 0;
 }
@@ -627,8 +649,8 @@ else {
 	scalestartindex = scalestartindex - 1;
 }
 
-var scalenotes = {};
-var patternnotes = {};
+scalenotes = {};
+patternnotes = {};
 
 for (i=0; i < scale.length; i++) {
 	scalenotes[i] = scale[i].split(":");
@@ -638,7 +660,7 @@ for (i=0; i < pattern.length; i++) {
 	patternnotes[i] = pattern[i].split(":");
 }
 
-var patternsize = pattern.length;
+patternsize = pattern.length;
 
 if (patternscaledegree > 0) {
 	startwait = 0;
@@ -708,10 +730,10 @@ for (i=0; i < pattern.length; i += 1) {
 		console.log ("Pattern Note: ", patternnotes[i]);  
 }
 
-var synthstarted = false; 
-var audioplaying = false;
-var timeout;
-var ramploopcounter=-1;
+synthstarted = false; 
+audioplaying = false;
+timeout;
+ramploopcounter=-1;
 
 if (window.synth !== undefined) {
 	if (synth != null) {
@@ -796,8 +818,6 @@ var patternnum = 0;
   	}
   }
 console.log("Notes Shown");
-
-console.log("Back Script");
 DisplayTab();
 }
 
