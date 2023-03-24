@@ -60,16 +60,18 @@ var patternscaledegree;
 function InitFront(scaledegree=0) {
 patternscaledegree = scaledegree;
 testfield = document.getElementById("testfield");
-testfield.innerHTML = "Initializing Front Script";
+testfield.innerHTML = "Executing Front Script";
 deckname = document.getElementById("decknamefield").innerHTML;
 cardtype = document.getElementById("cardtypefield").innerHTML;
 patternid = document.getElementById("patternidfield").innerHTML; 
 deckprefix = deckname + "/";
 configprefix = deckprefix;
 cardconfigprefix = deckname + "/" + patternid + "/" + cardtype + "/";
-
+testfield.innerHTML = "Card Config Prefix " + cardconfigprefix;
 
 InitConfig();
+
+testfield.innerHTML = "Config complete";
 
 bpmfield = document.getElementById("bpmfield");
 bpmvaluefield = document.getElementById("bpmvaluefield");
