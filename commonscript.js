@@ -537,6 +537,21 @@ function SetConfigPreviousValue(key) {
 	UpdateConfig();
 }
 
+function ConfigPatternDuration() {
+	console.log("Configuring pattern durations");
+	rhythmoverride = (patterncellsize > 1) ? (1, eval)("rhythm" + patterncellsize + "cell") : null;
+	console.log("Rhythm override", "rhythm" + patterncellsize + "cell = ", rhythmoverride);
+	if (rhythmoverride != null) {
+		var rhythmindex = 0;
+		for (var i=0; i < patternnotes.length; i += 1) {
+			rhythmindex = (rhythmindex == patterncellsize) ? 0 : rhythmindex;
+			patternnotes[i][1] = ((rhythmoverride[rhythmindex] != null) && (rhythmoverride[rhythmindex] != "")) ? rhythmoverride[rhythmindex] : patternnotes[i][1];
+			rhythmindex += 1;
+		}
+	}
+	console.log("Configured pattern durations", patternnotes);
+}
+
 function SetBPM (bpmvalue, step) {
 	if (bpmvalue == null) {
 		bpm = (step == null) ? bpmfield.value : Number(bpmfield.value) + step;
@@ -768,12 +783,6 @@ function PlayTab(notenum=null, waitforstart=true) {
 			synth.triggerAttackRelease(patternnotes[notenum][2], patternnotes[notenum][1], now);
 	}
 	synth.sync();
-}
-
-function ConfigPatternDuration() {
-	console.log("Configuring pattern durations");
-	rhythmoverride = (patterncellsize > 1) ? (1, eval)("rhythm" + patterncellsize + "cell") : null;
-	console.log("Rhythm override", "rhythm" + patterncellsize + "cell = ", rhythmoverride);
 }
 
 function ShowNotes() {
