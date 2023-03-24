@@ -63,7 +63,7 @@ patternid = document.getElementById("patternidfield").innerHTML;
 deckprefix = deckname + "/";
 configprefix = deckprefix;
 cardconfigprefix = deckname + "/" + patternid + "/" + cardtype + "/";
-testfield.innerHTML = "Config prefix is", cardconfigprefix);
+testfield.innerHTML = "Config prefix is " + cardconfigprefix;
 
 InitConfig();
 
