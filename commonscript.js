@@ -77,7 +77,6 @@ patterncellsize = document.getElementById("patterncellsizefield").innerHTML;
 if ((patterncellsize == "") || (patterncellsize == 0)) {
 	patterncellsize = 1;
 }
-ConfigPatternDuration(); 
 
 bpm = 10;
 beatsecs = 60/bpm;
@@ -144,6 +143,8 @@ else {
 		} 
 }
  
+ConfigPatternDuration(); 
+
 for (i=0; i < pattern.length; i += 1) {
 		var tempnotearr = getNoteWithAccidentals(i);
 
@@ -787,6 +788,8 @@ function ShowNotes() {
 }
 
 function UpdateConfig() {
+	ConfigPatternDuration(); 
+
 	if (window.DisplayTab) {
 		DisplayTab();
 	}
