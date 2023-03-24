@@ -55,12 +55,6 @@ var patternscaledegree;
 var testfield;
 testfield = document.getElementById("testfield");
 testfield.innerHTML = "Declared Global Vars";
-
-
-function InitFront(scaledegree=0) {
-patternscaledegree = scaledegree;
-testfield = document.getElementById("testfield");
-testfield.innerHTML = "Executing Front Script";
 deckname = document.getElementById("decknamefield").innerHTML;
 cardtype = document.getElementById("cardtypefield").innerHTML;
 patternid = document.getElementById("patternidfield").innerHTML; 
@@ -68,6 +62,11 @@ deckprefix = deckname + "/";
 configprefix = deckprefix;
 cardconfigprefix = deckname + "/" + patternid + "/" + cardtype + "/";
 testfield.innerHTML = "Card Config Prefix " + cardconfigprefix;
+
+function InitFront(scaledegree=0) {
+patternscaledegree = scaledegree;
+testfield = document.getElementById("testfield");
+testfield.innerHTML = "Executing Front Script";
 
 InitConfig();
 
