@@ -1,3 +1,7 @@
+var testfield;
+testfield = document.getElementById("testfield");
+testfield.innerHTML = "Initializing Front Script";
+
 var configitems = [ 
 {key:"cardsettings",		fieldname: "cardsettingsfield", 			fieldlabel: "Card Settings", 				fieldtype: "checkbox", 	value: "false"},
 {key:"startbpm", 				fieldname: "startbpmfield", 					fieldlabel: "Start BPM", 							fieldtype: "range", 		value: 85, 	step: 5, min: 10, max: 1000},
@@ -23,7 +27,6 @@ var configitems = [
 {key:"rhythm12cell", 		fieldname: "rhythm12cellfield",			fieldlabel: "12-Cell Rhythm", 				fieldtype: "text", 		  value: "[]"},
 ]; 
 
-var testfield;
 var deckname;
 var cardtype;
 var patternid;
@@ -57,13 +60,14 @@ var patternscaledegree;
 function InitFront(scaledegree=0) {
 patternscaledegree = scaledegree;
 testfield = document.getElementById("testfield");
+testfield.innerHTML = "Initializing Front Script";
 deckname = document.getElementById("decknamefield").innerHTML;
 cardtype = document.getElementById("cardtypefield").innerHTML;
 patternid = document.getElementById("patternidfield").innerHTML; 
 deckprefix = deckname + "/";
 configprefix = deckprefix;
 cardconfigprefix = deckname + "/" + patternid + "/" + cardtype + "/";
-testfield.innerHTML = "Config prefix is " + cardconfigprefix;
+
 
 InitConfig();
 
