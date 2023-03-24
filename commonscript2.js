@@ -63,10 +63,9 @@ configprefix = deckprefix;
 cardconfigprefix = deckname + "/" + patternid + "/" + cardtype + "/";
 testfield.innerHTML = "Card Config Prefix " + cardconfigprefix;
 
-function InitFront(scaledegree=0) {
-patternscaledegree = scaledegree;
-testfield = document.getElementById("testfield");
-testfield.innerHTML = "Executing Front Script";
+function InitFront() {
+//testfield = document.getElementById("testfield");
+//testfield.innerHTML = "Executing Front Script";
 }
 
 
