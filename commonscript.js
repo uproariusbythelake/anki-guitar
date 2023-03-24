@@ -543,7 +543,7 @@ function ConfigPatternDuration() {
 	console.log("Rhythm override", "rhythm" + patterncellsize + "cell = ", rhythmoverride);
 	if (rhythmoverride != null) {
 		var rhythmindex = 0;
-		for (var i=0; i < patternnotes.length; i += 1) {
+		for (var i=0; i < pattern.length; i += 1) {
 			rhythmindex = (rhythmindex == patterncellsize) ? 0 : rhythmindex;
 			patternnotes[i][1] = ((rhythmoverride[rhythmindex] != null) && (rhythmoverride[rhythmindex] != "")) ? rhythmoverride[rhythmindex] : patternnotes[i][1];
 			rhythmindex += 1;
