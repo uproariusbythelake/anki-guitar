@@ -1,7 +1,3 @@
-var testfield;
-testfield = document.getElementById("testfield");
-testfield.innerHTML = "Initializing Front Script";
-
 var configitems = [ 
 {key:"cardsettings",		fieldname: "cardsettingsfield", 			fieldlabel: "Card Settings", 				fieldtype: "checkbox", 	value: "false"},
 {key:"startbpm", 				fieldname: "startbpmfield", 					fieldlabel: "Start BPM", 							fieldtype: "range", 		value: 85, 	step: 5, min: 10, max: 1000},
@@ -56,6 +52,10 @@ var deckprefix;
 var configprefix;
 var cardconfigprefix;
 var patternscaledegree;
+var testfield;
+testfield = document.getElementById("testfield");
+testfield.innerHTML = "Declared Global Vars";
+
 
 function InitFront(scaledegree=0) {
 patternscaledegree = scaledegree;
