@@ -33,6 +33,7 @@ var configprefix = deckprefix;
 var cardconfigprefix = deckname + "/" + patternid + "/" + cardtype + "/";
 
 function InitConfig(cardscope) {
+	testfield.innerHTML = "Initializing config";
 	if (cardscope == null) {
 		if (localStorage.getItem(cardconfigprefix + "cardsettings") != null) {
 			configitems[0].value = localStorage.getItem(cardconfigprefix + "cardsettings");
