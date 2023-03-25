@@ -1,37 +1,9 @@
-var configitems = [];
-var deckname;
-var cardtype;
-var patternid;
-var deckprefix;
-var configprefix;
-var cardconfigprefix;
-var bpmfield;
-var bpmvaluefield;
-var scale;
-var pattern;
-var patternrepeatsfield;
-var patternrepeats;
-var patterncellsize;
-var bpm;
-var beatsecs;
-var notesShown;
-var scalestartindex;
-var scalenotes;
-var patternnotes;
-var patternsize;
-var startwait;
-var synthstarted; 
-var audioplaying;
-var timeout;
-var ramploopcounter;
-var deckprefix;
-var configprefix;
-var cardconfigprefix;
-var patternscaledegree;
-var testfield;
-
 function InitFront(scaledegree=0) {
-configitems = [ 
+(1,eval)('var testfield;');
+testfield = document.getElementById("testfield");
+testfield.innerHTML = "Initializing Front";
+
+(1, eval)('var configitems = [ 
 {key:"cardsettings",		fieldname: "cardsettingsfield", 			fieldlabel: "Card Settings", 				fieldtype: "checkbox", 	value: "false"},
 {key:"startbpm", 				fieldname: "startbpmfield", 					fieldlabel: "Start BPM", 							fieldtype: "range", 		value: 85, 	step: 5, min: 10, max: 1000},
 {key:"startwait", 				fieldname: "StartWait", 							fieldlabel: "Start Wait(seconds)", 	fieldtype: "range", 		value: 1, 		step: 1, min: 0, 	max: 9},
@@ -54,7 +26,37 @@ configitems = [
 {key:"rhythm10cell", 		fieldname: "rhythm10cellfield",			fieldlabel: "10-Cell Rhythm", 				fieldtype: "text", 		  value: "[]"},
 {key:"rhythm11cell", 		fieldname: "rhythm11cellfield",			fieldlabel: "11-Cell Rhythm", 				fieldtype: "text", 		  value: "[]"},
 {key:"rhythm12cell", 		fieldname: "rhythm12cellfield",			fieldlabel: "12-Cell Rhythm", 				fieldtype: "text", 		  value: "[]"},
-]; 
+];'); 
+(1,eval)('var deckname;');
+(1,eval)('var cardtype;');
+(1,eval)('var patternid;');
+(1,eval)('var deckprefix;');
+(1,eval)('var configprefix;');
+(1,eval)('var cardconfigprefix;');
+(1,eval)('var bpmfield;');
+(1,eval)('var bpmvaluefield;');
+(1,eval)('var scale;');
+(1,eval)('var pattern;');
+(1,eval)('var patternrepeatsfield;');
+(1,eval)('var patternscaledegreefield;');
+(1,eval)('var patternrepeats;');
+(1,eval)('var patterncellsize;');
+(1,eval)('var bpm;');
+(1,eval)('var beatsecs;');
+(1,eval)('var notesShown;');
+(1,eval)('var scalestartindex;');
+(1,eval)('var scalenotes;');
+(1,eval)('var patternnotes;');
+(1,eval)('var patternsize;');
+(1,eval)('var startwait;');
+(1,eval)('var synthstarted;'); 
+(1,eval)('var audioplaying;');
+(1,eval)('var timeout;');
+(1,eval)('var ramploopcounter;');
+(1,eval)('var deckprefix;');
+(1,eval)('var configprefix;');
+(1,eval)('var cardconfigprefix;');
+(1,eval)('var patternscaledegree;');
 
 testfield = document.getElementById("testfield");
 testfield.innerHTML = "Declared Global Vars";
@@ -66,7 +68,8 @@ configprefix = deckprefix;
 cardconfigprefix = deckname + "/" + patternid + "/" + cardtype + "/";
 testfield.innerHTML = "Card Config Prefix " + cardconfigprefix;
 
-patternscaledegree = scaledegree;
+patternscaledegreefield = document.getElementById("patternscaledegreefield");
+patternscaledegree = (patternscaledegreefield != null) ? Number(patternscaledegreefield) : scaledegree;
 testfield = document.getElementById("testfield");
 testfield.innerHTML = "Executing Front Script";
 
@@ -151,7 +154,7 @@ else {
 		} 
 }
  
-//ConfigPatternDuration(); 
+ConfigPatternDuration(); 
 
 for (i=0; i < pattern.length; i += 1) {
 		var tempnotearr = getNoteWithAccidentals(i);
@@ -539,13 +542,21 @@ function SetConfigPreviousValue(key) {
 
 function ConfigPatternDuration() {
 	console.log("Configuring pattern durations");
+	var durations = ["1n","2n","2n.","4n","4n.","4t","4t.","8n","8n.","8t","8t.","16n","16n.","16t","16t.","32n","32n.","32t","32t."];
+	
 	rhythmoverride = (patterncellsize > 1) ? (1, eval)("rhythm" + patterncellsize + "cell") : null;
 	console.log("Rhythm override", "rhythm" + patterncellsize + "cell = ", rhythmoverride);
 	if (rhythmoverride != null) {
 		var rhythmindex = 0;
 		for (var i=0; i < pattern.length; i += 1) {
 			rhythmindex = (rhythmindex == patterncellsize) ? 0 : rhythmindex;
-			patternnotes[i][1] = ((rhythmoverride[rhythmindex] != null) && (rhythmoverride[rhythmindex] != "")) ? rhythmoverride[rhythmindex] : patternnotes[i][1];
+			var newrhythm = (rhythmoverride[rhythmindex] != null) ? rhythmoverride[rhythmindex].trim() : "";
+			if (newrhythm != "") {				
+				if (newrhythm == "*") {
+					newrhythm = durations[Math.floor(Math.random() * durations.length)];
+				}
+				patternnotes[i][1] = newrhythm;
+			}
 			rhythmindex += 1;
 		}
 	}
