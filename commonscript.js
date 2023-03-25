@@ -544,7 +544,7 @@ function SetConfigPreviousValue(key) {
 
 function ConfigPatternDuration() {
 	console.log("Configuring pattern durations");
-	var durations = ["1n","2n","2n.","4n","4n.","4t","4t.","8n","8n.","8t","8t.","16n","16n.","16t","16t.","32n","32n.","32t","32t."];
+	var durations = ["4n","4n.","4t","4t.","8n","8n.","8t","8t.","16n","16n.","16t","16t.","32n","32n.","32t","32t."];
 	
 	rhythmoverride = (patterncellsize > 1) ? (1, eval)("rhythm" + patterncellsize + "cell") : null;
 	console.log("Rhythm override", "rhythm" + patterncellsize + "cell = ", rhythmoverride);
@@ -552,13 +552,9 @@ function ConfigPatternDuration() {
 		var rhythmindex = 0;
 		for (var i=0; i < pattern.length; i += 1) {
 			rhythmindex = (rhythmindex == patterncellsize) ? 0 : rhythmindex;
-			var newrhythm = (rhythmoverride[rhythmindex] != null) ? rhythmoverride[rhythmindex].trim() : "";
-			if (newrhythm != "") {				
-				if (newrhythm == "*") {
-					newrhythm = durations[Math.floor(Math.random() * durations.length)];
-				}
-				patternnotes[i][1] = newrhythm;
-			}
+			rhythmoverride[rhythmindex] = (rhythmoverride[rhythmindex] == null) ? "" : rhythmoverride[rhythmindex].trim();
+			rhythmoverride[rhythmindex] = (rhythmoverride[rhythmindex] == "*")) ? durations[Math.floor(Math.random() * durations.length)] : rhythmoverride[rhythmindex];
+			patternnotes[i][1] = (rhythmoverride[rhythmindex] != "") ? rhythmoverride[rhythmindex].trim() : patternnotes[i][1];
 			rhythmindex += 1;
 		}
 	}
@@ -765,7 +761,9 @@ function PlayTab(notenum=null, waitforstart=true) {
 			}
 		}
 
+		console.log("Pattern scale degree, repeats, id:", patternscaledegree, "/", typeof patternscaledegree , patternrepeats, "/", typeof patternrepeats, patternid);
 		if ((patternscaledegree == 0) && ((patternrepeats) || (patternid == 0))) {
+			console.log("Playing reverse pattern");
 			for (i = pattern.length/patterncellsize - 1; i >= 0; i = i - 1) {
 					if (pauseforplayback == true) {
 						pauseinterval += pausemultiple*patternduration;				
