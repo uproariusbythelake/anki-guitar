@@ -1,3 +1,5 @@
+InitFront();
+
 function InitFront(scaledegree=0) {
 (1,eval)('var testfield;');
 testfield = document.getElementById("testfield");
@@ -95,7 +97,6 @@ beatsecs = 60/bpm;
 SetBPM(startbpm);
 
 notesShown = false;
-
 
 scalestartindex = document.getElementById("scalestartindexfield").innerHTML;
 if ((scalestartindex == "") || (scalestartindex == 0)) {
