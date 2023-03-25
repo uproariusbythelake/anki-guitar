@@ -3,7 +3,8 @@ function InitFront(scaledegree=0) {
 testfield = document.getElementById("testfield");
 testfield.innerHTML = "Initializing Front";
 
-(1, eval)('var configitems = [ 
+(1,eval)('var configitems;');
+configitems = [ 
 {key:"cardsettings",		fieldname: "cardsettingsfield", 			fieldlabel: "Card Settings", 				fieldtype: "checkbox", 	value: "false"},
 {key:"startbpm", 				fieldname: "startbpmfield", 					fieldlabel: "Start BPM", 							fieldtype: "range", 		value: 85, 	step: 5, min: 10, max: 1000},
 {key:"startwait", 				fieldname: "StartWait", 							fieldlabel: "Start Wait(seconds)", 	fieldtype: "range", 		value: 1, 		step: 1, min: 0, 	max: 9},
@@ -26,7 +27,7 @@ testfield.innerHTML = "Initializing Front";
 {key:"rhythm10cell", 		fieldname: "rhythm10cellfield",			fieldlabel: "10-Cell Rhythm", 				fieldtype: "text", 		  value: "[]"},
 {key:"rhythm11cell", 		fieldname: "rhythm11cellfield",			fieldlabel: "11-Cell Rhythm", 				fieldtype: "text", 		  value: "[]"},
 {key:"rhythm12cell", 		fieldname: "rhythm12cellfield",			fieldlabel: "12-Cell Rhythm", 				fieldtype: "text", 		  value: "[]"},
-];'); 
+]; 
 (1,eval)('var deckname;');
 (1,eval)('var cardtype;');
 (1,eval)('var patternid;');
