@@ -553,7 +553,7 @@ function ConfigPatternDuration() {
 		for (var i=0; i < pattern.length; i += 1) {
 			rhythmindex = (rhythmindex == patterncellsize) ? 0 : rhythmindex;
 			rhythmoverride[rhythmindex] = (rhythmoverride[rhythmindex] == null) ? "" : rhythmoverride[rhythmindex].trim();
-			rhythmoverride[rhythmindex] = (rhythmoverride[rhythmindex] == "*")) ? durations[Math.floor(Math.random() * durations.length)] : rhythmoverride[rhythmindex];
+			rhythmoverride[rhythmindex] = (rhythmoverride[rhythmindex] == "*") ? durations[Math.floor(Math.random() * durations.length)] : rhythmoverride[rhythmindex];
 			patternnotes[i][1] = (rhythmoverride[rhythmindex] != "") ? rhythmoverride[rhythmindex].trim() : patternnotes[i][1];
 			rhythmindex += 1;
 		}
