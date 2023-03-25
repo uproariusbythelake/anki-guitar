@@ -72,7 +72,7 @@ cardconfigprefix = deckname + "/" + patternid + "/" + cardtype + "/";
 testfield.innerHTML = "Card Config Prefix " + cardconfigprefix;
 
 patternscaledegreefield = document.getElementById("patternscaledegreefield");
-patternscaledegree = (patternscaledegreefield != null) ? Number(patternscaledegreefield) : Number(scaledegree);
+patternscaledegree = (patternscaledegreefield != null) ? Number(patternscaledegreefield.innerHTML.trim()) : Number(scaledegree);
 testfield = document.getElementById("testfield");
 testfield.innerHTML = "Executing Front Script";
 
