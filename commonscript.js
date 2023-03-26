@@ -226,6 +226,7 @@ if (document.getElementById("playbuttonfield") != null) {
 
 SetFieldValueByNameOrId("startingstringfield", patternnotes[0][3]);
 SetFieldValueByNameOrId("startingfretfield", patternnotes[0][4]);
+}
 
 function InitConfig(cardscope) {
 	testfield.innerHTML = "Initializing config";
@@ -967,5 +968,3 @@ if (tabtable1 != null) {
 	}
 }
 }
-
-
