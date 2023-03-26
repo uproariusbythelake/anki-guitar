@@ -60,6 +60,9 @@ configitems = [
 (1,eval)('var configprefix;');
 (1,eval)('var cardconfigprefix;');
 (1,eval)('var patternscaledegree;');
+(1,eval)('var startingdegreefield;');
+(1,eval)('var startingstringfield;');
+(1,eval)('var startingfretfield;');
 
 testfield = document.getElementById("testfield");
 testfield.innerHTML = "Declared Global Vars";
@@ -75,6 +78,11 @@ patternscaledegreefield = document.getElementById("patternscaledegreefield");
 patternscaledegree = (patternscaledegreefield != null) ? Number(patternscaledegreefield.innerHTML.trim()) : Number(scaledegree);
 testfield = document.getElementById("testfield");
 testfield.innerHTML = "Executing Front Script";
+
+startingdegreefield = document.getElementById("startingdegreefield");
+if (startingdegreefield != null) {startingdegreefield.innerHTML = (patternscaledegree == 0) ? 1: patternscaledegree;}
+startingstringfield = document.getElementById("startingstringfield");
+startingfretfield = document.getElementById("startingfretfield");
 
 InitConfig();
 
@@ -201,12 +209,18 @@ if (window.synth !== undefined) {
 	}
 }
 
-console.log("Checking autoplay", autoplay);
-if ((autoplay) && (document.getElementById("answer") == null)){
-	console.log("Autoplaying");
-	TogglePlayButton(true);
-	PlayTab();
+if (document.getElementById("playbuttonfield") != null) {
+	console.log("Checking autoplay", autoplay);
+	if ((autoplay) && (document.getElementById("answer") == null)){
+		console.log("Autoplaying");
+		TogglePlayButton(true);
+		PlayTab();
+	}
 }
+
+if (startingstringfield != null) {startingstringfield.innerHTML = patternnotes[0][3];}
+if (startingfretfield != null) {startingfretfield.innerHTML = patternnotes[0][4];}
+
 }
 
 function InitConfig(cardscope) {
