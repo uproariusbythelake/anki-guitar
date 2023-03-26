@@ -150,7 +150,8 @@ if (patternscaledegree > 0) {
 			var newduration = patternnotes[newnote - 1][1];
 			newnotetxt =  newnote + ":" + newduration;
 			pattern = [newnotetxt];
-			patternnotes = [[newnote, newduration]];
+			patternnotes = [];
+			patternnotes[0] = newnotetxt.split(":");
 		}
 	}
 }
