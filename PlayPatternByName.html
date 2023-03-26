@@ -1,0 +1,266 @@
+<span id="soundfile" hidden>{{SoundFile}}</span>
+<span id="testfield" hidden>Test</span>
+<span id="cardflagfield" hidden>{{CardFlag}}</span>
+
+<script src="http://unpkg.com/tone"></script>
+
+<script>
+var patternscaledegree = 0;
+var synthstarted = false;
+var startwait = 0;
+
+function setBPM () {
+	bpm = bpmfield.value;
+	localStorage.setItem("bpm", bpm);
+	bpmvaluefield.innerHTML = bpm;
+	beatsecs = 60/bpm;
+
+}
+
+function getNoteWithAccidentals(notenum) {
+	var sharpslist = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B", "C", "B#", "C#", "E#", "F#"];
+	var flatslist = ["C", "B", "Bb", "A", "Ab", "G", "Gb", "F", "E", "Eb", "D", "Db", "C", "Cb", "Bb", "Fb", "Eb"];
+	var scalenum = patternnotes[notenum][0] - 1 + scalestartindex;
+	var tempnotename = scalenotes[scalenum][0];
+	var tempstring = Number(scalenotes[scalenum][1]);
+	var tempfret = Number(scalenotes[scalenum][2]);
+
+	var duration = patternnotes[notenum][1].trim().replace("#", "").replace("b", "");
+
+	var patternHasSharp = patternnotes[notenum][1].trim().endsWith("#");
+	var patternHasFlat = patternnotes[notenum][1].trim().endsWith("b");
+
+	var scalenoteHasSharp = tempnotename[1].endsWith("#");
+	var scalenoteHasFlat = tempnotename[1].endsWith("b");
+
+	if (patternHasSharp == true) {
+		console.log ("Pattern has sharp");
+		tempfret += 1;
+
+		if (scalenoteHasFlat == true){
+			tempnotename = tempnotename[0] + tempnotename[2];
+			console.log ("Scale note is flat. New note is:", tempnotename);			
+		}
+		else {
+			if (scalenoteHasSharp == true) {
+				var index = sharpslist.indexOf(tempnotename[0] + tempnotename[1]) + 1;
+				tempnotename = sharpslist[index] + tempnotename[2];
+				console.log ("Scale note is sharp. New note is:", tempnotename);			
+			}
+			else {
+				var index = sharpslist.indexOf(tempnotename[0]) + 1;
+				tempnotename = sharpslist[index] + tempnotename[1];
+				console.log ("Scale note is natural. New note is:", tempnotename);			
+			}
+		}
+	}
+
+	if (patternHasFlat == true) {
+		if (tempfret > 0) {
+			tempfret -= 1;
+		}
+		else {
+			stringnum = Number(tempstring);
+			if (stringnum < 6) {
+				tempstring += 1;
+				tempfret = 4;
+				if (stringnum == 2) {
+					tempfret = 3;
+				}
+			}
+		} 
+
+		console.log ("Pattern has flat");
+		if (scalenoteHasSharp == true){
+			tempnotename = tempnotename[0] + tempnotename[2];
+			console.log ("Scale note is sharp. New note is:", tempnotename);
+		}
+		else {
+			if (scalenoteHasFlat == true) {
+				var index = flatslist.indexOf(tempnotename[0] + tempnotename[1]) + 1;
+				tempnotename = flatslist[index] + tempnotename[2];
+				console.log ("Scale note is flat. New note is:", tempnotename);
+			}
+			else {
+				var index = flatslist.indexOf(tempnotename[0]) + 1;
+				tempnotename = flatslist[index] + tempnotename[1];
+				console.log ("Scale note is natural. New note is:", tempnotename);	
+			}
+		}
+	}
+
+	var tempnotearr = [tempnotename, duration, "" + tempstring, "" + tempfret ];
+	console.log("Notenum ", notenum, " Pattern Note:", patternnotes[notenum][0] + ":" + patternnotes[notenum][1], " Note Array ", tempnotearr);
+	return tempnotearr;
+}
+
+function PlayTab(notenum) {
+	if (synthstarted) {
+		synth.disconnect();
+	}
+	synth = new Tone.Synth();
+	synth.toDestination();
+	const now = Tone.now() + startwait;
+  synth.context.resume();
+	synthstarted = true;
+
+	if (notenum == null) {
+		var pauseinterval = 0;
+		var pausecounter = patterncellsize;
+		var pausefield = document.getElementById("PauseBetweenSections");
+		var pause = pausefield.checked;
+
+		for (var i = 0; i < pattern.length; i += 1) {
+			if ((pause) && (pausecounter == 0)){
+				pauseinterval += beatsecs * patterncellsize;				
+				pausecounter = patterncellsize;
+			}
+			
+			var timeinterval = beatsecs*i;
+			if (pause) {
+				timeinterval += pauseinterval;
+			}
+			scalenum = patternnotes[i][0] - 1 + scalestartindex;
+			synth.triggerAttackRelease(patternnotes[i][2], patternnotes[i][1], now + timeinterval);
+
+			if (pause) {
+				pausecounter -= 1;
+			}
+		}
+
+		if ((patternrepeats == "true") || (patternid == 0)) {
+			for (i = pattern.length/patterncellsize - 1; i >= 0; i = i - 1) {
+					if (pause) {
+						pauseinterval += beatsecs * patterncellsize;				
+					}
+			
+					for (var j=0; j < patterncellsize; j += 1) {
+						var offsetnum = i*patterncellsize + j;
+						scalenum = patternnotes[offsetnum][0] - 1 + scalestartindex;
+						var offsetinterval = beatsecs*(2*pattern.length - (i*patterncellsize) + j);
+						console.log("Reverse pattern play: ", i + "/" + j + " ", patternnotes[offsetnum][2], " ", patternnotes[offsetnum][1], " ", now + pauseinterval + offsetinterval);
+						synth.triggerAttackRelease(patternnotes[offsetnum][2], patternnotes[offsetnum][1], now + pauseinterval + offsetinterval);
+
+					}
+			}
+		}
+	}
+	else {
+			scalenum = patternnotes[notenum][0] - 1 + scalestartindex;
+			synth.triggerAttackRelease(patternnotes[notenum][2], patternnotes[notenum][1], now);
+	}
+}
+</script>
+<br/>
+<div class=instruction style='font-size: 30px'>
+Play the scale pattern or melody on the guitar.<br/><br/>
+</div>
+
+<div style='font-family: "Arial"; font-size: 20px; font-weight: bold; color: blue;'>
+<input type='checkbox' id="PauseBetweenSections" hidden></input>
+</div>
+
+<b>{{Pattern Name}}</b></br>
+<b>{{ScaleKey}} {{ScaleType}}</b>
+<div style="font-size:25px">
+<b>Starting On Scale Degree <span id="startingdegreefield"></span><br/></b>
+Starting String <span id="startingstringfield"></span>
+Starting Fret <span id="startingfretfield"></span> <br/>
+Neck Position {{NeckPositions}}
+{{#Pattern Id}}
+ <br/>Pattern ID <span id="patternidfield">{{Pattern Id}}</span> <br/></br/>
+{{/Pattern Id}}
+</div>
+<div style="font-size:30px">
+{{Pattern Description}}
+</div>
+
+<span id="scalenotesfield" hidden>{{Scale Notes}}</span>
+<span id="patternnotesfield" hidden>{{Pattern Notes}}</span>
+<span id="patternrepeatsfield" hidden>{{PatternRepeats}}</span>
+<span id="patterncellsizefield" hidden>{{Pattern Cellsize}}</span>
+<span id="scalestartindexfield" hidden>{{Scale Start Index}}</span>
+
+<script>
+var scale = document.getElementById("scalenotesfield").innerHTML.trim().split(" ");
+var pattern = document.getElementById("patternnotesfield").innerHTML.trim().split(" ");
+var patternrepeatsfield = document.getElementById("patternrepeatsfield");
+var patternrepeats = (patternrepeatsfield.innerHTML === "true") ? true : false;
+console.log("Pattern repeats ", patternrepeats);
+var patternidfield = document.getElementById("patternidfield");
+var patternid = (patternidfield != null) ? patternidfield.innerHTML : ""; 
+var startingdegreefield = document.getElementById("startingdegreefield");
+startingdegreefield.innerHTML = patternscaledegree == 0 ? 1: patternscaledegree;
+var startingstringfield = document.getElementById("startingstringfield");
+var startingfretfield = document.getElementById("startingfretfield");
+var patterncellsize = document.getElementById("patterncellsizefield").innerHTML;
+if ((patterncellsize == "") || (patterncellsize == 0)) {
+	patterncellsize = 1;
+}
+var scalestartindex = document.getElementById("scalestartindexfield").innerHTML;
+if ((scalestartindex == "") || (scalestartindex == 0)) {
+	scalestartindex = 0;
+}
+else {
+	scalestartindex = scalestartindex - 1;
+}
+
+var scalenotes = {};
+var patternnotes = {};
+
+for (i=0; i < scale.length; i++) {
+	scalenotes[i] = scale[i].split(":");
+}
+
+
+for (i=0; i < pattern.length; i++) {
+	patternnotes[i] = pattern[i].split(":");
+}
+
+var patternsize = pattern.length;
+
+if (patternscaledegree > 0) {
+	if (patternrepeats) {
+		for (j=0; j < patternsize; j += 1) {
+			var newnote = Number(patternnotes[j][0]) + (patternscaledegree - 1);
+			var newduration = patternnotes[j][1];
+			newnotetxt =  newnote + ":" + newduration;
+			pattern[j] = newnotetxt;
+			patternnotes[j] = newnotetxt.split(":");
+		}
+	}
+	else {
+			var newnote = Number(patternnotes[0][0]) + (patternscaledegree - 1);
+			var newduration = patternnotes[newnote - 1][1];
+			newnotetxt =  newnote + ":" + newduration;
+			pattern = [newnotetxt];
+			patternnotes = [[newnote, newduration]];
+	}
+}
+else {
+		var newpatternsize = pattern.length;
+		if (patternrepeats) {
+				for (i=1; i < 8; i += 1) {
+					for (j=0; j < patternsize; j += 1) {
+						var newnote = Number(patternnotes[newpatternsize - patternsize][0]) + 1;
+						var newduration = patternnotes[j][1];
+						newnotetxt =  newnote + ":" + newduration;
+						pattern[newpatternsize] = newnotetxt;
+						patternnotes[newpatternsize] = newnotetxt.split(":");
+						newpatternsize += 1;
+					}
+				}
+		}
+}
+
+for (i=0; i < pattern.length; i += 1) {
+		var tempnotearr = getNoteWithAccidentals(i);
+		patternnotes[i] = [i, tempnotearr[1], tempnotearr[0], tempnotearr[2], tempnotearr[3]];
+		console.log ("Pattern Note: ", patternnotes[i]);
+}
+
+startingstringfield.innerHTML = patternnotes[0][3];
+startingfretfield.innerHTML = patternnotes[0][4];
+
+</script>
+
