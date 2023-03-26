@@ -80,7 +80,7 @@ testfield = document.getElementById("testfield");
 testfield.innerHTML = "Executing Front Script";
 
 startingdegreefield = document.getElementById("startingdegreefield");
-if (patternscaledegree != 0) {
+if (patternscaledegree == 0) {
 	SetFieldValueByNameOrId("startingdegreefield", 1);
 } 
 else {
@@ -567,7 +567,7 @@ function SetFieldValueByNameOrId(fieldnameorid, fieldvalue) {
 		SetFieldValue(field, fieldvalue);
 		
 		//Set by name
-		var fieldlist = document.getElementByName(fieldnameorid);
+		var fieldlist = document.getElementsByName(fieldnameorid);
 		if (fieldlist != null) {
 			for (var i=0; i < fieldlist.length; i++) {
 				SetFieldValue(fieldlist[i], fieldvalue);
