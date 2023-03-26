@@ -80,7 +80,13 @@ testfield = document.getElementById("testfield");
 testfield.innerHTML = "Executing Front Script";
 
 startingdegreefield = document.getElementById("startingdegreefield");
-if (startingdegreefield != null) {startingdegreefield.innerHTML = (patternscaledegree == 0) ? 1: patternscaledegree;}
+if (patternscaledegree != 0) {
+	SetFieldValueByNameOrId("startingdegreefield", 1);
+} 
+else {
+	SetFieldValueByNameOrId("startingdegreefield", patternscaledegree);
+}
+
 startingstringfield = document.getElementById("startingstringfield");
 startingfretfield = document.getElementById("startingfretfield");
 
@@ -218,10 +224,8 @@ if (document.getElementById("playbuttonfield") != null) {
 	}
 }
 
-if (startingstringfield != null) {startingstringfield.innerHTML = patternnotes[0][3];}
-if (startingfretfield != null) {startingfretfield.innerHTML = patternnotes[0][4];}
-
-}
+SetFieldValueByNameOrId("startingstringfield", patternnotes[0][3]);
+SetFieldValueByNameOrId("startingfretfield", patternnotes[0][4]);
 
 function InitConfig(cardscope) {
 	testfield.innerHTML = "Initializing config";
@@ -556,6 +560,41 @@ function SetConfigPreviousValue(key) {
 	UpdateConfig();
 }
 
+function SetFieldValueByNameOrId(fieldnameorid, fieldvalue) {
+	if (fieldnameorid != null) {
+		//Set by id
+		var field = document.getElementById(fieldnameorid);
+		SetFieldValue(field, fieldvalue);
+		
+		//Set by name
+		var fieldlist = document.getElementByName(fieldnameorid);
+		if (fieldlist != null) {
+			for (var i=0; i < fieldlist.length; i++) {
+				SetFieldValue(fieldlist[i], fieldvalue);
+			}
+		}		
+	}
+}
+
+function SetFieldValue(field, fieldvalue) {
+	if (field != null) {
+		if (field.tagName == "INPUT") {
+			if (field.type == "checkbox") {
+				field.checked = (fieldvalue == "true");
+				field.value = (fieldvalue == "true"); 
+			}
+			else {
+				field.value = fieldvalue;
+			}
+			console.log ("Set input field ", field);
+		}
+		else {
+			field.innerHTML = fieldvalue;
+			console.log ("Set field ", field);
+		}
+	}
+}
+
 function ConfigPatternDuration() {
 	console.log("Configuring pattern durations");
 	var durations = ["4n","4n.","4t","4t.","8n","8n.","8t","8t.","16n","16n.","16t","16t.","32n","32n.","32t","32t."];
@@ -579,15 +618,15 @@ function SetBPM (bpmvalue, step) {
 	if (bpmvalue == null) {
 		if (bpmfield != null) {
 			bpm = (step == null) ? bpmfield.value : Number(bpmfield.value) + step;
-			bpmfield.value = bpm;
-			bpmvaluefield.innerHTML = bpmfield.value + " BPM";
+			SetFieldValueByNameOrId("bpm", bpm);
+			SetFieldValueByNameOrId("bpmvaluefield", bpm + " BPM");
 		}
 	}
 	else {
 		bpm = (step == null) ? bpmvalue : Number(bpmvalue) + step;
 		if (bpmfield != null) {
-			bpmfield.value = bpm;
-			bpmvaluefield.innerHTML = bpmfield.value + " BPM";
+			SetFieldValueByNameOrId("bpm", bpm);
+			SetFieldValueByNameOrId("bpmvaluefield", bpm + " BPM");
 		}
 	}
 	beatsecs = 60/bpm;
