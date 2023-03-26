@@ -626,10 +626,8 @@ function SetBPM (bpmvalue, step) {
 	}
 	else {
 		bpm = (step == null) ? bpmvalue : Number(bpmvalue) + step;
-		if (bpmfield != null) {
-			SetFieldValueByNameOrId("bpm", bpm);
-			SetFieldValueByNameOrId("bpmvaluefield", bpm + " BPM");
-		}
+		SetFieldValueByNameOrId("bpm", bpm);
+		SetFieldValueByNameOrId("bpmvaluefield", bpm + " BPM");
 	}
 	beatsecs = 60/bpm;
 }
