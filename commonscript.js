@@ -577,14 +577,18 @@ function ConfigPatternDuration() {
 
 function SetBPM (bpmvalue, step) {
 	if (bpmvalue == null) {
-		bpm = (step == null) ? bpmfield.value : Number(bpmfield.value) + step;
-		bpmfield.value = bpm;
-		bpmvaluefield.innerHTML = bpmfield.value + " BPM";
+		if (bpmfield != null) {
+			bpm = (step == null) ? bpmfield.value : Number(bpmfield.value) + step;
+			bpmfield.value = bpm;
+			bpmvaluefield.innerHTML = bpmfield.value + " BPM";
+		}
 	}
 	else {
-		bpmfield.value = (step == null) ? bpmvalue : Number(bpmvalue) + step;
-		bpm = bpmfield.value;
-		bpmvaluefield.innerHTML = bpmfield.value + " BPM";
+		bpm = (step == null) ? bpmvalue : Number(bpmvalue) + step;
+		if (bpmfield != null) {
+			bpmfield.value = bpm;
+			bpmvaluefield.innerHTML = bpmfield.value + " BPM";
+		}
 	}
 	beatsecs = 60/bpm;
 }
@@ -812,20 +816,22 @@ function PlayTab(notenum=null, waitforstart=true) {
 
 function ShowNotes() {
 	if (!notesShown) {
-	notesShown = true;
-	var patterntable = document.getElementById("patterntable");
-	patterntable.rows[0].deleteCell(0);
-	var patternnum = 0;
-		for (var rownum = 0; rownum < (pattern.length / 7); rownum += 1) {
-	  	patterntable.insertRow(rownum);
-			for (var i=0; i < 7; i += 1) {
-		  	if (patternnum < pattern.length) {
-					patternnum += 1;
-					patterntable.rows[rownum].insertCell(i);
-					patterntable.rows[rownum].cells[i].innerHTML = "<button style='font-family: arial; font-size: 25px; font-weight: bold; color: blue; border:none; padding: 4px 4px; margin: 0px 0px;' onclick='PlayTab(" + (patternnum - 1) + ")'>" + patternnum + "</button>";
-		  	}
-  		}
-  	}
+		notesShown = true;
+		var patterntable = document.getElementById("patterntable");
+		if (patterntable != null) {
+			patterntable.rows[0].deleteCell(0);
+			var patternnum = 0;
+				for (var rownum = 0; rownum < (pattern.length / 7); rownum += 1) {
+				patterntable.insertRow(rownum);
+					for (var i=0; i < 7; i += 1) {
+					if (patternnum < pattern.length) {
+							patternnum += 1;
+							patterntable.rows[rownum].insertCell(i);
+							patterntable.rows[rownum].cells[i].innerHTML = "<button style='font-family: arial; font-size: 25px; font-weight: bold; color: blue; border:none; padding: 4px 4px; margin: 0px 0px;' onclick='PlayTab(" + (patternnum - 1) + ")'>" + patternnum + "</button>";
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -855,12 +861,6 @@ function SaveSettings() {
 
 function InitBack() {
 var patterntable = document.getElementById("patternnotestable");
-var startingstringfield = document.getElementById("startingstringfield");
-var startingfretfield = document.getElementById("startingfretfield");
-var startingscaledegreefield = document.getElementById("startingscaledegreefield");
-startingscaledegreefield.innerHTML = (patternscaledegree > 0) ? patternscaledegree : 1;
-startingstringfield.innerHTML = patternnotes[0][3];
-startingfretfield.innerHTML = patternnotes[0][4];
 
 var patternnum = 0;
 	for (var rownum = 0; rownum < (pattern.length / 7); rownum += 1) {
