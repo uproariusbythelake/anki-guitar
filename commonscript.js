@@ -1,4 +1,7 @@
 InitFront();
+if (document.getElementById("answer") != null) {
+	InitBack();
+}
 
 function InitFront(scaledegree=0) {
 (1,eval)('var testfield;');
