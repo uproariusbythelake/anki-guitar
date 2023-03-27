@@ -66,6 +66,7 @@ configitems = [
 (1,eval)('var startingdegreefield;');
 (1,eval)('var startingstringfield;');
 (1,eval)('var startingfretfield;');
+(1,eval)('var startingnotenamefield;');
 
 testfield = document.getElementById("testfield");
 testfield.innerHTML = "Declared Global Vars";
@@ -92,6 +93,7 @@ else {
 
 startingstringfield = document.getElementById("startingstringfield");
 startingfretfield = document.getElementById("startingfretfield");
+startingnotenamefield = document.getElementById("startingnotenamefield");
 
 InitConfig();
 
@@ -230,6 +232,7 @@ if (document.getElementById("playbuttonfield") != null) {
 
 SetFieldValueByNameOrId("startingstringfield", patternnotes[0][3]);
 SetFieldValueByNameOrId("startingfretfield", patternnotes[0][4]);
+SetFieldValueByNameOrId("startingnotenamefield", patternnotes[0][2]);
 }
 
 function InitConfig(cardscope) {
