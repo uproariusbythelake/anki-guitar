@@ -624,13 +624,14 @@ function ConfigPatternDuration() {
 
 function SetBPM (bpmvalue, step) {
 	if (bpmvalue == null) {
-		bpm = (step == null) ? bpm : Number(bpm) + step;
-		SetFieldValueByNameOrId("bpm", bpm);
+		bpmvalue = (bpmfield != null) Number(bpmfield.value) : bpm;
+		bpm = (step == null) ? bpmvalue : Number(bpmvalue) + step;
+		SetFieldValueByNameOrId("bpmfield", bpm);
 		SetFieldValueByNameOrId("bpmvaluefield", bpm + " BPM");
 	}
 	else {
-		bpm = (step == null) ? bpmvalue : Number(bpmvalue) + step;
-		SetFieldValueByNameOrId("bpm", bpm);
+		bpm = (step == null) ? Number(bpmvalue) : Number(bpmvalue) + step;
+		SetFieldValueByNameOrId("bpmfield", bpm);
 		SetFieldValueByNameOrId("bpmvaluefield", bpm + " BPM");
 	}
 	beatsecs = 60/bpm;
