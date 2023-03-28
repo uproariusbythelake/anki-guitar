@@ -624,7 +624,7 @@ function ConfigPatternDuration() {
 
 function SetBPM (bpmvalue, step) {
 	if (bpmvalue == null) {
-		var tmpvalue = (bpmfield != null) ? Number(bpmfield.value) : bpm;
+		var tmpvalue = (bpmfield != null) ? Number(bpmfield.value) :  bpm;
 		bpm = (step == null) ? tmpvalue : Number(tmpvalue) + step;
 		SetFieldValueByNameOrId("bpmfield", bpm);
 		SetFieldValueByNameOrId("bpmvaluefield", bpm + " BPM");
