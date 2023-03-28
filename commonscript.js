@@ -607,7 +607,7 @@ function ConfigPatternDuration() {
 	console.log("Configuring pattern durations");
 	var durations = ["4n","4n.","4t","4t.","8n","8n.","8t","8t.","16n","16n.","16t","16t.","32n","32n.","32t","32t."];
 	
-	rhythmoverride = (patterncellsize > 1) ? (1, eval)("rhythm" + patterncellsize + "cell") : null;
+	rhythmoverride = (patterncellsize > 2) ? (1, eval)("rhythm" + patterncellsize + "cell") : null;
 	console.log("Rhythm override", "rhythm" + patterncellsize + "cell = ", rhythmoverride);
 	if (rhythmoverride != null) {
 		var rhythmindex = 0;
