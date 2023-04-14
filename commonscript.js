@@ -931,9 +931,9 @@ var tabstrings = ["E", "B", "G", "D", "A", "E"];
 
 if (tabtable1 != null) {
 	while(tabtable1.rows.length > 0) {
-  	tabtable1.deleteRow(0);
+		tabtable1.deleteRow(0);
 	}
-	while(tabtable2.rows.length > 0) {
+	while((tabtable2 != null) && (tabtable2.rows.length > 0)) {
   	tabtable2.deleteRow(0);
 	}
 
@@ -942,11 +942,14 @@ if (tabtable1 != null) {
 				cell = row.insertCell(0);
 				cell.style.fontSize = fontsize;
 				cell.innerHTML = tabstrings[i] + "|";
-
-  	    row = tabtable2.insertRow(i);
+		if ((tabtable2 != null) {
+		   if ((patternscaledegree == 0) && ((patternrepeats) || (patternid == 0))) {
+			row = tabtable2.insertRow(i);
 				cell = row.insertCell(0);
 				cell.style.fontSize = fontsize;
 				cell.innerHTML = tabstrings[i] + "|";
+		   }
+		}
 
 	}
 
@@ -956,9 +959,13 @@ if (tabtable1 != null) {
 			cell = tabtable1.rows[r].insertCell(c);
 			cell.style.fontSize = fontsize;
 			cell.innerHTML = '-';
-			cell = tabtable2.rows[r].insertCell(c);
-			cell.style.fontSize = fontsize;
-			cell.innerHTML = '-';
+			if ((tabtable2 != null) {
+				if ((patternscaledegree == 0) && ((patternrepeats) || (patternid == 0))) {
+					cell = tabtable2.rows[r].insertCell(c);
+					cell.style.fontSize = fontsize;
+					cell.innerHTML = '-';
+				}
+			}
 		}
 	}
 
@@ -968,7 +975,11 @@ if (tabtable1 != null) {
 		var rownum = patternnotes[c-1][3] - 1;
 		var tabposfretval = patternnotes[c-1][4]; 
 		tabtable1.rows[rownum].cells[c].innerHTML = tabposfretval + "<sup>" + note + "</sup><sub>"; 
-		tabtable2.rows[rownum].cells[pattern.length + 1 - c].innerHTML = tabposfretval + "<sup>" + note + "</sup>";  
+		if ((tabtable2 != null) {
+		   if ((patternscaledegree == 0) && ((patternrepeats) || (patternid == 0))) {		
+			tabtable2.rows[rownum].cells[pattern.length + 1 - c].innerHTML = tabposfretval + "<sup>" + note + "</sup>";  
+		   }
+		}
 	}
 }
 }
