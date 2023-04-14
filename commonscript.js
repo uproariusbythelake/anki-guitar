@@ -648,8 +648,8 @@ function getNoteWithAccidentals(notenum) {
 
 	var duration = patternnotes[notenum][1].trim().replace("#", "").replace("b", "");
 
-	var patternHasSharp = patternnotes[notenum][0].trim().endsWith("#");
-	var patternHasFlat = patternnotes[notenum][0].trim().endsWith("b");
+	var patternHasSharp = patternnotes[notenum][1].trim().endsWith("#");
+	var patternHasFlat = patternnotes[notenum][1].trim().endsWith("b");
 
 	var scalenoteHasSharp = tempnotename[1].endsWith("#");
 	var scalenoteHasFlat = tempnotename[1].endsWith("b");
