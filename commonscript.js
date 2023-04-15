@@ -68,6 +68,15 @@ configitems = [
 (1,eval)('var startingfretfield;');
 (1,eval)('var startingnotenamefield;');
 
+(1,eval)('var scaleslist;');
+scaleslist = [ 
+{scalekey:"C",	scaletype:"Major", neckposition:"0",	scalestartindex:6,	scalenotes:"E2:6:0 F2:6:1 G2:6:3 A2:5:0 B2:5:2 C3:5:3 D3:4:0 E3:4:2 F3:4:3 G3:3:0 A3:3:2 B3:2:0 C4:2:1 D4:2:3 E4:1:0 F4:1:1 G4:1:3 A4:1:5 B4:1:7 C5:1:8 D5:1:10 E5:1:12 F5:1:13 G5:1:15"},
+{scalekey:"C",	scaletype:"Major", neckposition:"2",	scalestartindex:6,	scalenotes:"E2:6:0 F2:6:1 G2:6:3 A2:5:0 B2:5:2 C3:5:3 D3:5:5 E3:4:2 F3:4:3 G3:4:5 A3:3:2 B3:3:4 C4:3:5 D4:2:3 E4:2:5 F4:2:6 G4:1:3 A4:1:5 B4:1:7 C5:1:8 D5:1:10 E5:1:12 F5:1:13 G5:1:15"},
+{scalekey:"C",	scaletype:"Major", neckposition:"5",	scalestartindex:6,	scalenotes:"E2:6:0 F2:6:1 G2:6:3 A2:6:5 B2:6:7 C3:6:8 D3:5:5 E3:5:7 F3:5:8 G3:4:5 A3:4:7 B3:3:4 C4:3:5 D4:3:7 E4:2:5 F4:2:6 G4:2:8 A4:1:5 B4:1:7 C5:1:8 D5:1:10 E5:1:12 F5:1:13 G5:1:15"},
+{scalekey:"C",	scaletype:"Major", neckposition:"7",	scalestartindex:6,	scalenotes:"E2:6:0 F2:6:1 G2:6:3 A2:6:5 B2:6:7 C3:6:8 D3:6:10 E3:5:7 F3:5:8 G3:5:10 A3:4:7 B3:4:9 C4:4:10 D4:3:7 E4:3:9 F4:3:10 G4:2:8 A4:2:10 B4:1:7 C5:1:8 D5:1:10 E5:1:12 F5:1:13 G5:1:15"},
+{scalekey:"C",	scaletype:"Major", neckposition:"9",	scalestartindex:6,	scalenotes:"E2:6:0 F2:6:1 G2:6:3 A2:6:5 B2:6:7 C3:6:8 D3:6:10 E3:6:12 F3:5:8 G3:5:10 A3:5:12 B3:4:9 C4:4:10 D4:4:12 E4:3:9 F4:3:10 G4:3:12 A4:2:10 B4:2:12 C5:1:8 D5:1:10 E5:1:12 F5:1:13 G5:1:15"}
+]; 
+
 testfield = document.getElementById("testfield");
 testfield.innerHTML = "Declared Global Vars";
 deckname = document.getElementById("decknamefield").innerHTML;
