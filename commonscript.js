@@ -68,13 +68,69 @@ configitems = [
 (1,eval)('var startingfretfield;');
 (1,eval)('var startingnotenamefield;');
 
-(1,eval)('var scaleslist;');
-scaleslist = [ 
-{scalekey:"C",	scaletype:"Major", neckposition:"0",	scalestartindex:6,	scalenotes:"E2:6:0 F2:6:1 G2:6:3 A2:5:0 B2:5:2 C3:5:3 D3:4:0 E3:4:2 F3:4:3 G3:3:0 A3:3:2 B3:2:0 C4:2:1 D4:2:3 E4:1:0 F4:1:1 G4:1:3 A4:1:5 B4:1:7 C5:1:8 D5:1:10 E5:1:12 F5:1:13 G5:1:15"},
-{scalekey:"C",	scaletype:"Major", neckposition:"2",	scalestartindex:6,	scalenotes:"E2:6:0 F2:6:1 G2:6:3 A2:5:0 B2:5:2 C3:5:3 D3:5:5 E3:4:2 F3:4:3 G3:4:5 A3:3:2 B3:3:4 C4:3:5 D4:2:3 E4:2:5 F4:2:6 G4:1:3 A4:1:5 B4:1:7 C5:1:8 D5:1:10 E5:1:12 F5:1:13 G5:1:15"},
-{scalekey:"C",	scaletype:"Major", neckposition:"5",	scalestartindex:6,	scalenotes:"E2:6:0 F2:6:1 G2:6:3 A2:6:5 B2:6:7 C3:6:8 D3:5:5 E3:5:7 F3:5:8 G3:4:5 A3:4:7 B3:3:4 C4:3:5 D4:3:7 E4:2:5 F4:2:6 G4:2:8 A4:1:5 B4:1:7 C5:1:8 D5:1:10 E5:1:12 F5:1:13 G5:1:15"},
-{scalekey:"C",	scaletype:"Major", neckposition:"7",	scalestartindex:6,	scalenotes:"E2:6:0 F2:6:1 G2:6:3 A2:6:5 B2:6:7 C3:6:8 D3:6:10 E3:5:7 F3:5:8 G3:5:10 A3:4:7 B3:4:9 C4:4:10 D4:3:7 E4:3:9 F4:3:10 G4:2:8 A4:2:10 B4:1:7 C5:1:8 D5:1:10 E5:1:12 F5:1:13 G5:1:15"},
-{scalekey:"C",	scaletype:"Major", neckposition:"9",	scalestartindex:6,	scalenotes:"E2:6:0 F2:6:1 G2:6:3 A2:6:5 B2:6:7 C3:6:8 D3:6:10 E3:6:12 F3:5:8 G3:5:10 A3:5:12 B3:4:9 C4:4:10 D4:4:12 E4:3:9 F4:3:10 G4:3:12 A4:2:10 B4:2:12 C5:1:8 D5:1:10 E5:1:12 F5:1:13 G5:1:15"}
+(1,eval)('var scalelist;');
+scalelist = [ 
+{scalekey:"C",	scaletype:"Major", neckposition:0,	scalestartindex:6,	scalenotes:"E2:6:0 F2:6:1 G2:6:3 A2:5:0 B2:5:2 C3:5:3 D3:4:0 E3:4:2 F3:4:3 G3:3:0 A3:3:2 B3:2:0 C4:2:1 D4:2:3 E4:1:0 F4:1:1 G4:1:3 A4:1:5 B4:1:7 C5:1:8 D5:1:10 E5:1:12 F5:1:13 G5:1:15 A5:1:17 B5:1:19 C6:1:20 D6:1:22 E6:1:24"},
+{scalekey:"C",	scaletype:"Major", neckposition:2,	scalestartindex:6,	scalenotes:"E2:6:0 F2:6:1 G2:6:3 A2:5:0 B2:5:2 C3:5:3 D3:5:5 E3:4:2 F3:4:3 G3:4:5 A3:3:2 B3:3:4 C4:3:5 D4:2:3 E4:2:5 F4:2:6 G4:1:3 A4:1:5 B4:1:7 C5:1:8 D5:1:10 E5:1:12 F5:1:13 G5:1:15 A5:1:17 B5:1:19 C6:1:20 D6:1:22 E6:1:24"},
+{scalekey:"C",	scaletype:"Major", neckposition:5,	scalestartindex:6,	scalenotes:"E2:6:0 F2:6:1 G2:6:3 A2:6:5 B2:6:7 C3:6:8 D3:5:5 E3:5:7 F3:5:8 G3:4:5 A3:4:7 B3:3:4 C4:3:5 D4:3:7 E4:2:5 F4:2:6 G4:2:8 A4:1:5 B4:1:7 C5:1:8 D5:1:10 E5:1:12 F5:1:13 G5:1:15 A5:1:17 B5:1:19 C6:1:20 D6:1:22 E6:1:24"},
+{scalekey:"C",	scaletype:"Major", neckposition:7,	scalestartindex:6,	scalenotes:"E2:6:0 F2:6:1 G2:6:3 A2:6:5 B2:6:7 C3:6:8 D3:6:10 E3:5:7 F3:5:8 G3:5:10 A3:4:7 B3:4:9 C4:4:10 D4:3:7 E4:3:9 F4:3:10 G4:2:8 A4:2:10 B4:1:7 C5:1:8 D5:1:10 E5:1:12 F5:1:13 G5:1:15 A5:1:17 B5:1:19 C6:1:20 D6:1:22 E6:1:24"},
+{scalekey:"C",	scaletype:"Major", neckposition:9,	scalestartindex:6,	scalenotes:"E2:6:0 F2:6:1 G2:6:3 A2:6:5 B2:6:7 C3:6:8 D3:6:10 E3:6:12 F3:5:8 G3:5:10 A3:5:12 B3:4:9 C4:4:10 D4:4:12 E4:3:9 F4:3:10 G4:3:12 A4:2:10 B4:2:12 C5:1:8 D5:1:10 E5:1:12 F5:1:13 G5:1:15 A5:1:17 B5:1:19 C6:1:20 D6:1:22 E6:1:24"},
+{scalekey:"G",	scaletype:"Major", neckposition:0,	scalestartindex:3,	scalenotes:"E2:6:0 F#2:6:2 G2:6:3 A2:5:0 B2:5:2 C3:5:3 D3:4:0 E3:4:2 F#3:4:4 G3:3:0 A3:3:2 B3:2:0 C4:2:1 D4:2:3 E4:1:0 F#4:1:2 G4:1:3 A4:1:5 B4:1:7 C5:1:8 D5:1:10 E5:1:12 F#5:1:14 G5:1:15 A5:1:17 B5:1:19 C6:1:20 D6:1:22 E6:1:24"},
+{scalekey:"G",	scaletype:"Major", neckposition:2,	scalestartindex:3,	scalenotes:"E2:6:0 F#2:6:2 G2:6:3 A2:5:0 B2:5:2 C3:5:3 D3:5:5 E3:4:2 F#3:4:4 G3:4:5 A3:3:2 B3:3:4 C4:3:5 D4:2:3 E4:2:5 F#4:2:7 G4:1:3 A4:1:5 B4:1:7 C5:1:8 D5:1:10 E5:1:12 F#5:1:14 G5:1:15 A5:1:17 B5:1:19 C6:1:20 D6:1:22 E6:1:24"},
+{scalekey:"G",	scaletype:"Major", neckposition:5,	scalestartindex:3,	scalenotes:"E2:6:0 F#2:6:2 G2:6:3 A2:6:5 B2:6:7 C3:6:8 D3:5:5 E3:5:7 F#3:5:9 G3:4:5 A3:4:7 B3:3:4 C4:3:5 D4:3:7 E4:2:5 F#4:2:7 G4:2:8 A4:1:5 B4:1:7 C5:1:8 D5:1:10 E5:1:12 F#5:1:14 G5:1:15 A5:1:17 B5:1:19 C6:1:20 D6:1:22 E6:1:24"},
+{scalekey:"G",	scaletype:"Major", neckposition:7,	scalestartindex:3,	scalenotes:"E2:6:0 F#2:6:2 G2:6:3 A2:6:5 B2:6:7 C3:6:8 D3:6:10 E3:5:7 F#3:5:9 G3:5:10 A3:4:7 B3:4:9 C4:4:10 D4:3:7 E4:3:9 F#4:3:11 G4:2:8 A4:2:10 B4:1:7 C5:1:8 D5:1:10 E5:1:12 F#5:1:14 G5:1:15 A5:1:17 B5:1:19 C6:1:20 D6:1:22 E6:1:24"},
+{scalekey:"G",	scaletype:"Major", neckposition:9,	scalestartindex:3,	scalenotes:"E2:6:0 F#2:6:2 G2:6:3 A2:6:5 B2:6:7 C3:6:8 D3:6:10 E3:6:12 F#3:5:9 G3:5:10 A3:5:12 B3:4:9 C4:4:10 D4:4:12 E4:3:9 F#4:3:11 G4:3:12 A4:2:10 B4:2:12 C5:1:8 D5:1:10 E5:1:12 F#5:1:14 G5:1:15 A5:1:17 B5:1:19 C6:1:20 D6:1:22 E6:1:24"},
+{scalekey:"D",	scaletype:"Major", neckposition:0,	scalestartindex:7,	scalenotes:"E2:6:0 F#2:6:2 G2:6:3 A2:5:0 B2:5:2 C#3:5:4 D3:4:0 E3:4:2 F#3:4:3 G3:3:0 A3:3:2 B3:2:0 C#4:2:2 D4:2:3 E4:1:0 F#4:1:2 G4:1:3 A4:1:5 B4:1:7 C#5:1:9 D5:1:10 E5:1:12 F#5:1:14 G5:1:15 A5:1:17 B5:1:19 C#6:1:21 D6:1:22 E6:1:24"},
+{scalekey:"D",	scaletype:"Major", neckposition:2,	scalestartindex:7,	scalenotes:"E2:6:0 F#2:6:2 G2:6:3 A2:5:0 B2:5:2 C#3:5:4 D3:4:0 E3:4:2 F#3:4:3 G3:3:0 A3:3:2 B3:2:0 C#4:2:2 D4:2:3 E4:1:0 F#4:1:2 G4:1:3 A4:1:5 B4:1:7 C#5:1:9 D5:1:10 E5:1:12 F#5:1:14 G5:1:15 A5:1:17 B5:1:19 C#6:1:21 D6:1:22 E6:1:24"},
+{scalekey:"D",	scaletype:"Major", neckposition:5,	scalestartindex:7,	scalenotes:"E2:6:0 F#2:6:2 G2:6:3 A2:6:5 B2:6:7 C#3:6:9 D3:5:5 E3:5:7 F#3:5:9 G3:4:5 A3:4:7 B3:3:4 C#4:3:6 D4:3:7 E4:2:5 F#4:2:7 G4:2:8 A4:1:5 B4:1:7 C#5:1:9 D5:1:10 E5:1:12 F#5:1:14 G5:1:15 A5:1:17 B5:1:19 C#6:1:21 D6:1:22 E6:1:24"},
+{scalekey:"D",	scaletype:"Major", neckposition:7,	scalestartindex:7,	scalenotes:"E2:6:0 F#2:6:2 G2:6:3 A2:6:5 B2:6:7 C#3:6:9 D3:6:10 E3:5:7 F#3:5:9 G3:5:10 A3:4:7 B3:4:9 C#4:4:11 D4:3:7 E4:3:9 F#4:3:11 G4:2:8 A4:2:10 B4:1:7 C#5:1:9 D5:1:10 E5:1:12 F#5:1:14 G5:1:15 A5:1:17 B5:1:19 C#6:1:21 D6:1:22 E6:1:24"},
+{scalekey:"D",	scaletype:"Major", neckposition:9,	scalestartindex:7,	scalenotes:"E2:6:0 F#2:6:2 G2:6:3 A2:6:5 B2:6:7 C#3:6:9 D3:6:10 E3:6:12 F#3:5:9 G3:5:10 A3:5:12 B3:4:9 C#4:4:11 D4:4:12 E4:3:9 F#4:3:11 G4:3:12 A4:2:10 B4:2:12 C#5:1:9 D5:1:10 E5:1:12 F#5:1:14 G#5:1:16 A5:1:17 B5:1:19 C#6:1:21 D6:1:22 E6:1:24"},
+{scalekey:"A",	scaletype:"Major", neckposition:0,	scalestartindex:4,	scalenotes:"E2:6:0 F#2:6:2 G#2:6:4 A2:5:0 B2:5:2 C#3:5:4 D3:4:0 E3:4:2 F#3:4:3 G#3:3:1 A3:3:2 B3:2:0 C#4:2:2 D4:2:3 E4:1:0 F#4:1:2 G#4:1:4 A4:1:5 B4:1:7 C#5:1:9 D5:1:10 E5:1:12 F#5:1:14 G#5:1:16 A5:1:17 B5:1:19 C#6:1:21 D6:1:22 E6:1:24"},
+{scalekey:"A",	scaletype:"Major", neckposition:2,	scalestartindex:4,	scalenotes:"E2:6:0 F#2:6:2 G#2:6:4 A2:5:0 B2:5:2 C#3:5:4 D3:4:0 E3:4:2 F#3:4:3 G#3:3:1 A3:3:2 B3:2:0 C#4:2:2 D4:2:3 E4:1:0 F#4:1:2 G#4:1:4 A4:1:5 B4:1:7 C#5:1:9 D5:1:10 E5:1:12 F#5:1:14 G#5:1:16 A5:1:17 B5:1:19 C#6:1:21 D6:1:22 E6:1:24"},
+{scalekey:"A",	scaletype:"Major", neckposition:5,	scalestartindex:4,	scalenotes:"E2:6:0 F#2:6:2 G#2:6:4 A2:6:5 B2:6:7 C#3:6:9 D3:5:5 E3:5:7 F#3:5:9 G#3:4:6 A3:4:7 B3:3:4 C#4:3:6 D4:3:7 E4:2:5 F#4:2:7 G#4:2:9 A4:1:5 B4:1:7 C#5:1:9 D5:1:10 E5:1:12 F#5:1:14 G#5:1:16 A5:1:17 B5:1:19 C#6:1:21 D6:1:22 E6:1:24"},
+{scalekey:"A",	scaletype:"Major", neckposition:7,	scalestartindex:4,	scalenotes:"E2:6:0 F#2:6:2 G#2:6:4 A2:6:5 B2:6:7 C#3:6:9 D3:6:10 E3:5:7 F#3:5:9 G#3:5:11 A3:4:7 B3:4:9 C#4:4:11 D4:3:7 E4:3:9 F#4:3:11 G#4:2:9 A4:2:10 B4:1:7 C#5:1:9 D5:1:10 E5:1:12 F#5:1:14 G#5:1:16 A5:1:17 B5:1:19 C#6:1:21 D6:1:22 E6:1:24"},
+{scalekey:"A",	scaletype:"Major", neckposition:9,	scalestartindex:4,	scalenotes:"E2:6:0 F#2:6:2 G#2:6:4 A2:6:5 B2:6:7 C#3:6:9 D3:6:10 E3:6:12 F#3:5:9 G#3:5:11 A3:5:12 B3:4:9 C#4:4:11 D4:4:12 E4:3:9 F#4:3:11 G#4:3:13 A4:2:10 B4:2:12 C#5:1:9 D5:1:10 E5:1:12 F#5:1:14 G#5:1:16 A5:1:17 B5:1:19 C#6:1:21 D6:1:22 E6:1:24"},
+{scalekey:"E",	scaletype:"Major", neckposition:0,	scalestartindex:1,	scalenotes:"E2:6:0 F#2:6:2 G#2:6:4 A2:5:0 B2:5:2 C#3:5:4 D#3:4:1 E3:4:2 F#3:4:3 G#3:3:1 A3:3:2 B3:2:0 C#4:2:2 D#4:2:4 E4:1:0 F#4:1:2 G#4:1:4 A4:1:5 B4:1:7 C#5:1:9 D#5:1:11 E5:1:12 F#5:1:14 G#5:1:16 A5:1:17 B5:1:19 C#6:1:21 D#6:1:23 E6:1:24"},
+{scalekey:"E",	scaletype:"Major", neckposition:2,	scalestartindex:1,	scalenotes:"E2:6:0 F#2:6:2 G#2:6:4 A2:5:0 B2:5:2 C#3:5:4 D#3:4:1 E3:4:2 F#3:4:3 G#3:3:1 A3:3:2 B3:2:0 C#4:2:2 D#4:2:4 E4:1:0 F#4:1:2 G#4:1:4 A4:1:5 B4:1:7 C#5:1:9 D#5:1:11 E5:1:12 F#5:1:14 G#5:1:16 A5:1:17 B5:1:19 C#6:1:21 D#6:1:23 E6:1:24"},
+{scalekey:"E",	scaletype:"Major", neckposition:5,	scalestartindex:1,	scalenotes:"E2:6:0 F#2:6:2 G#2:6:4 A2:6:5 B2:6:7 C#3:6:9 D#3:5:6 E3:5:7 F#3:5:9 G#3:4:6 A3:4:7 B3:3:4 C#4:3:6 D#4:3:8 E4:2:5 F#4:2:7 G#4:2:9 A4:1:5 B4:1:7 C#5:1:9 D#5:1:11 E5:1:12 F#5:1:14 G#5:1:16 A5:1:17 B5:1:19 C#6:1:21 D#6:1:23 E6:1:24"},
+{scalekey:"E",	scaletype:"Major", neckposition:7,	scalestartindex:1,	scalenotes:"E2:6:0 F#2:6:2 G#2:6:4 A2:6:5 B2:6:7 C#3:6:9 D#3:6:11 E3:5:7 F#3:5:9 G#3:5:11 A3:4:7 B3:4:9 C#4:4:11 D#4:3:8 E4:3:9 F#4:3:11 G#4:2:9 A4:2:10 B4:1:7 C#5:1:9 D#5:1:11 E5:1:12 F#5:1:14 G#5:1:16 A5:1:17 B5:1:19 C#6:1:21 D#6:1:23 E6:1:24"},
+{scalekey:"E",	scaletype:"Major", neckposition:9,	scalestartindex:1,	scalenotes:"E2:6:0 F#2:6:2 G#2:6:4 A2:6:5 B2:6:7 C#3:6:9 D#3:6:11 E3:6:12 F#3:5:9 G#3:5:11 A3:5:12 B3:4:9 C#4:4:11 D#4:4:13 E4:3:9 F#4:3:11 G#4:3:13 A4:2:10 B4:2:12 C#5:1:9 D#5:1:11 E5:1:12 F#5:1:14 G#5:1:16 A5:1:17 B5:1:19 C#6:1:21 D#6:1:23 E6:1:24"},
+{scalekey:"B",	scaletype:"Major", neckposition:0,	scalestartindex:5,	scalenotes:"E2:6:0 F#2:6:2 G#2:6:4 A#2:5:1 B2:5:2 C#3:5:4 D#3:4:1 E3:4:2 F#3:4:3 G#3:3:1 A#3:3:3 B3:2:0 C#4:2:2 D#4:2:4 E4:1:0 F#4:1:2 G#4:1:4 A#4:1:6 B4:1:7 C#5:1:9 D#5:1:11 E5:1:12 F#5:1:14 G#5:1:16 A#5:1:18 B5:1:19 C#6:1:21 D#6:1:23 E6:1:24"},
+{scalekey:"B",	scaletype:"Major", neckposition:2,	scalestartindex:5,	scalenotes:"E2:6:0 F#2:6:2 G#2:6:4 A#2:5:1 B2:5:2 C#3:5:4 D#3:4:1 E3:4:2 F#3:4:3 G#3:3:1 A#3:3:3 B3:2:0 C#4:2:2 D#4:2:4 E4:1:0 F#4:1:2 G#4:1:4 A#4:1:6 B4:1:7 C#5:1:9 D#5:1:11 E5:1:12 F#5:1:14 G#5:1:16 A#5:1:18 B5:1:19 C#6:1:21 D#6:1:23 E6:1:24"},
+{scalekey:"B",	scaletype:"Major", neckposition:5,	scalestartindex:5,	scalenotes:"E2:6:0 F#2:6:2 G#2:6:4 A#2:6:6 B2:6:7 C#3:6:9 D#3:5:6 E3:5:7 F#3:5:9 G#3:4:6 A#3:4:8 B3:3:4 C#4:3:6 D#4:3:8 E4:2:5 F#4:2:7 G#4:2:9 A#4:1:6 B4:1:7 C#5:1:9 D#5:1:11 E5:1:12 F#5:1:14 G#5:1:16 A#5:1:18 B5:1:19 C#6:1:21 D#6:1:23 E6:1:24"},
+{scalekey:"B",	scaletype:"Major", neckposition:7,	scalestartindex:5,	scalenotes:"E2:6:0 F#2:6:2 G#2:6:4 A#2:6:6 B2:6:7 C#3:6:9 D#3:6:11 E3:5:7 F#3:5:9 G#3:5:11 A#3:4:8 B3:4:9 C#4:4:11 D#4:3:8 E4:3:9 F#4:3:11 G#4:2:9 A#4:2:11 B4:1:7 C#5:1:9 D#5:1:11 E5:1:12 F#5:1:14 G#5:1:16 A#5:1:18 B5:1:19 C#6:1:21 D#6:1:23 E6:1:24"},
+{scalekey:"B",	scaletype:"Major", neckposition:9,	scalestartindex:5,	scalenotes:"E2:6:0 F#2:6:2 G#2:6:4 A#2:6:6 B2:6:7 C#3:6:9 D#3:6:11 E3:6:12 F#3:5:9 G#3:5:11 A#3:5:13 B3:4:9 C#4:4:11 D#4:4:13 E4:3:9 F#4:3:11 G#4:3:13 A#4:2:11 B4:2:12 C#5:1:9 D#5:1:11 E5:1:12 F#5:1:14 G#5:1:16 A#5:1:18 B5:1:19 C#6:1:21 D#6:1:23 E6:1:24"},
+
+{scalekey:"F",	scaletype:"Major", neckposition:0,	scalestartindex:2,	scalenotes:"E2:6:0 F2:6:1 G2:6:3 A2:5:0 Bb2:5:1 C3:5:3 D3:4:0 E3:4:2 F3:4:3 G3:3:0 A3:3:2 Bb3:2:0 C4:2:1 D4:2:3 E4:1:0 F4:1:1 G4:1:3 A4:1:5 Bb4:1:7 C5:1:8 D5:1:10 E5:1:12 F5:1:13 G5:1:15 A5:1:17 Bb5:1:18 C6:1:20 D6:1:22 E6:1:24"},
+{scalekey:"F",	scaletype:"Major", neckposition:2,	scalestartindex:2,	scalenotes:"E2:6:0 F2:6:1 G2:6:3 A2:5:0 Bb2:5:1 C3:5:3 D3:5:5 E3:4:2 F3:4:3 G3:4:5 A3:3:2 Bb3:3:4 C4:3:5 D4:2:3 E4:2:5 F4:2:6 G4:1:3 A4:1:5 Bb4:1:7 C5:1:8 D5:1:10 E5:1:12 F5:1:13 G5:1:15 A5:1:17 Bb5:1:18 C6:1:20 D6:1:22 E6:1:24"},
+{scalekey:"F",	scaletype:"Major", neckposition:5,	scalestartindex:2,	scalenotes:"E2:6:0 F2:6:1 G2:6:3 A2:6:5 Bb2:6:6 C3:6:8 D3:5:5 E3:5:7 F3:5:8 G3:4:5 A3:4:7 Bb3:3:4 C4:3:5 D4:3:7 E4:2:5 F4:2:6 G4:2:8 A4:1:5 Bb4:1:7 C5:1:8 D5:1:10 E5:1:12 F5:1:13 G5:1:15 A5:1:17 Bb5:1:18 C6:1:20 D6:1:22 E6:1:24"},
+{scalekey:"F",	scaletype:"Major", neckposition:7,	scalestartindex:2,	scalenotes:"E2:6:0 F2:6:1 G2:6:3 A2:6:5 Bb2:6:6 C3:6:8 D3:6:10 E3:5:7 F3:5:8 G3:5:10 A3:4:7 Bb3:4:9 C4:4:10 D4:3:7 E4:3:9 F4:3:10 G4:2:8 A4:2:10 Bb4:1:7 C5:1:8 D5:1:10 E5:1:12 F5:1:13 G5:1:15 A5:1:17 Bb5:1:18 C6:1:20 D6:1:22 E6:1:24"},
+{scalekey:"F",	scaletype:"Major", neckposition:9,	scalestartindex:2,	scalenotes:"E2:6:0 F2:6:1 G2:6:3 A2:6:5 Bb2:6:6 C3:6:8 D3:6:10 E3:6:12 F3:5:8 G3:5:10 A3:5:12 Bb3:4:9 C4:4:10 D4:4:12 E4:3:9 F4:3:10 G4:3:12 A4:2:10 Bb4:2:12 C5:1:8 D5:1:10 E5:1:12 F5:1:13 G5:1:15 A5:1:17 Bb5:1:18 C6:1:20 D6:1:22 E6:1:24"},
+{scalekey:"Bb",	scaletype:"Major", neckposition:0,	scalestartindex:4,	scalenotes:"F2:6:1 G2:6:3 A2:5:0 Bb2:5:1 C3:5:3 D3:4:0 Eb3:4:1 F3:4:3 G3:3:0 A3:3:2 Bb3:2:0 C4:2:1 D4:2:3 Eb4:1:0 F4:1:1 G4:1:3 A4:1:5 Bb4:1:7 C5:1:8 D5:1:10 Eb5:1:12 F5:1:13 G5:1:15 A5:1:17 Bb5:1:18 A5:1:17 Bb5:1:18 C6:1:20 D6:1:22 Eb6:1:23"},
+{scalekey:"Bb",	scaletype:"Major", neckposition:2,	scalestartindex:4,	scalenotes:"F2:6:1 G2:6:3 A2:5:0 Bb2:5:1 C3:5:3 D3:5:5 Eb3:4:1 F3:4:3 G3:4:5 A3:3:2 Bb3:3:4 C4:3:5 D4:2:3 Eb4:2:5 F4:2:6 G4:1:3 A4:1:5 Bb4:1:7 C5:1:8 D5:1:10 Eb5:1:12 F5:1:13 G5:1:15 A5:1:17 Bb5:1:18 A5:1:17 Bb5:1:18 C6:1:20 D6:1:22 Eb6:1:23"},
+{scalekey:"Bb",	scaletype:"Major", neckposition:5,	scalestartindex:4,	scalenotes:"F2:6:1 G2:6:3 A2:6:5 Bb2:6:6 C3:6:8 D3:5:5 Eb3:5:6 F3:5:8 G3:4:5 A3:4:7 Bb3:3:4 C4:3:5 D4:3:7 Eb4:2:5 F4:2:6 G4:2:8 A4:1:5 Bb4:1:7 C5:1:8 D5:1:10 Eb5:1:12 F5:1:13 G5:1:15 A5:1:17 Bb5:1:18 A5:1:17 Bb5:1:18 C6:1:20 D6:1:22 Eb6:1:23"},
+{scalekey:"Bb",	scaletype:"Major", neckposition:7,	scalestartindex:4,	scalenotes:"F2:6:1 G2:6:3 A2:6:5 Bb2:6:6 C3:6:8 D3:6:10 Eb3:5:6 F3:5:8 G3:5:10 A3:4:7 Bb3:4:9 C4:4:10 D4:3:7 Eb4:3:9 F4:3:10 G4:2:8 A4:2:10 Bb4:1:7 C5:1:8 D5:1:10 Eb5:1:12 F5:1:13 G5:1:15 A5:1:17 Bb5:1:18 A5:1:17 Bb5:1:18 C6:1:20 D6:1:22 Eb6:1:23"},
+{scalekey:"Bb",	scaletype:"Major", neckposition:9,	scalestartindex:4,	scalenotes:"F2:6:1 G2:6:3 A2:6:5 Bb2:6:6 C3:6:8 D3:6:10 Eb3:6:11 F3:5:8 G3:5:10 A3:5:12 Bb3:4:9 C4:4:10 D4:4:12 Eb4:3:9 F4:3:10 G4:3:12 A4:2:10 Bb4:2:12 C5:1:8 D5:1:10 Eb5:1:12 F5:1:13 G5:1:15 A5:1:17 Bb5:1:18 A5:1:17 Bb5:1:18 C6:1:20 D6:1:22 Eb6:1:23"},
+{scalekey:"Eb",	scaletype:"Major", neckposition:0,	scalestartindex:7,	scalenotes:"F2:6:1 G2:6:3 Ab2:6:4 Bb2:5:1 C3:5:3 D3:4:0 Eb3:4:1 F3:4:3 G3:3:0 Ab3:3:1 Bb3:2:0 C4:2:1 D4:2:3 Eb4:1:0 F4:1:1 G4:1:3 Ab4:1:4 Bb4:1:7 C5:1:8 D5:1:10 Eb5:1:12 F5:1:13 G5:1:15 Ab5:1:16 Bb5:1:18 C6:1:20 D6:1:22 Eb6:1:23"},
+{scalekey:"Eb",	scaletype:"Major", neckposition:2,	scalestartindex:7,	scalenotes:"F2:6:1 G2:6:3 Ab2:6:4 Bb2:5:1 C3:5:3 D3:5:5 Eb3:4:1 F3:4:3 G3:4:5 Ab3:3:1 Bb3:3:4 C4:3:5 D4:2:3 Eb4:2:5 F4:2:6 G4:1:3 Ab4:1:4 Bb4:1:7 C5:1:8 D5:1:10 Eb5:1:12 F5:1:13 G5:1:15 Ab5:1:16 Bb5:1:18 C6:1:20 D6:1:22 Eb6:1:23"},
+{scalekey:"Eb",	scaletype:"Major", neckposition:5,	scalestartindex:7,	scalenotes:"F2:6:1 G2:6:3 Ab2:6:4 Bb2:6:6 C3:6:8 D3:5:5 Eb3:5:6 F3:5:8 G3:4:5 Ab3:4:6 Bb3:3:4 C4:3:5 D4:3:7 Eb4:2:5 F4:2:6 G4:2:8 Ab4:1:4 Bb4:1:7 C5:1:8 D5:1:10 Eb5:1:12 F5:1:13 G5:1:15 Ab5:1:16 Bb5:1:18 C6:1:20 D6:1:22 Eb6:1:23"},
+{scalekey:"Eb",	scaletype:"Major", neckposition:7,	scalestartindex:7,	scalenotes:"F2:6:1 G2:6:3 Ab2:6:4 Bb2:6:6 C3:6:8 D3:6:10 Eb3:5:6 F3:5:8 G3:5:10 Ab3:4:6 Bb3:4:9 C4:4:10 D4:3:7 Eb4:3:9 F4:3:10 G4:2:8 Ab4:2:9 Bb4:1:7 C5:1:8 D5:1:10 Eb5:1:12 F5:1:13 G5:1:15 Ab5:1:16 Bb5:1:18 C6:1:20 D6:1:22 Eb6:1:23"},
+{scalekey:"Eb",	scaletype:"Major", neckposition:9,	scalestartindex:7,	scalenotes:"F2:6:1 G2:6:3 Ab2:6:4 Bb2:6:6 C3:6:8 D3:6:10 Eb3:6:11 F3:5:8 G3:5:10 Ab3:5:11 Bb3:4:9 C4:4:10 D4:4:12 Eb4:3:9 F4:3:10 G4:3:12 Ab4:2:9 Bb4:2:12 C5:1:8 D5:1:10 Eb5:1:12 F5:1:13 G5:1:15 Ab5:1:16 Bb5:1:18 C6:1:20 D6:1:22 Eb6:1:23"},
+{scalekey:"Ab",	scaletype:"Major", neckposition:0,	scalestartindex:3,	scalenotes:"F2:6:1 G2:6:3 Ab2:6:4 Bb2:5:1 C3:5:3 Db3:5:4 Eb3:4:1 F3:4:3 G3:3:0 Ab3:3:1 Bb3:2:0 C4:2:1 Db4:2:2 Eb4:1:0 F4:1:1 G4:1:3 Ab4:1:4 Bb4:1:7 C5:1:8 Db5:1:9 Eb5:1:12 F5:1:13 G5:1:15 Ab5:1:16 Bb5:1:18 C6:1:20 Db6:1:21 Eb6:1:23"},
+{scalekey:"Ab",	scaletype:"Major", neckposition:2,	scalestartindex:3,	scalenotes:"F2:6:1 G2:6:3 Ab2:6:4 Bb2:5:1 C3:5:3 Db3:5:4 Eb3:4:1 F3:4:3 G3:4:5 Ab3:3:1 Bb3:3:4 C4:3:5 Db4:2:2 Eb4:2:5 F4:2:6 G4:1:3 Ab4:1:4 Bb4:1:7 C5:1:8 Db5:1:9 Eb5:1:12 F5:1:13 G5:1:15 Ab5:1:16 Bb5:1:18 C6:1:20 Db6:1:21 Eb6:1:23"},
+{scalekey:"Ab",	scaletype:"Major", neckposition:5,	scalestartindex:3,	scalenotes:"F2:6:1 G2:6:3 Ab2:6:4 Bb2:6:6 C3:6:8 Db3:5:4 Eb3:5:6 F3:5:8 G3:4:5 Ab3:4:6 Bb3:3:4 C4:3:5 Db4:3:6 Eb4:2:5 F4:2:6 G4:2:8 Ab4:1:4 Bb4:1:7 C5:1:8 Db5:1:9 Eb5:1:12 F5:1:13 G5:1:15 Ab5:1:16 Bb5:1:18 C6:1:20 Db6:1:21 Eb6:1:23"},
+{scalekey:"Ab",	scaletype:"Major", neckposition:7,	scalestartindex:3,	scalenotes:"F2:6:1 G2:6:3 Ab2:6:4 Bb2:6:6 C3:6:8 Db3:6:9 Eb3:5:6 F3:5:8 G3:5:10 Ab3:4:6 Bb3:4:9 C4:4:10 Db4:3:6 Eb4:3:9 F4:3:10 G4:2:8 Ab4:2:9 Bb4:1:7 C5:1:8 Db5:1:9 Eb5:1:12 F5:1:13 G5:1:15 Ab5:1:16 Bb5:1:18 C6:1:20 Db6:1:21 Eb6:1:23"},
+{scalekey:"Ab",	scaletype:"Major", neckposition:9,	scalestartindex:3,	scalenotes:"F2:6:1 G2:6:3 Ab2:6:4 Bb2:6:6 C3:6:8 Db3:6:9 Eb3:6:11 F3:5:8 G3:5:10 Ab3:5:11 Bb3:4:9 C4:4:10 Db4:4:11 Eb4:3:9 F4:3:10 G4:3:12 Ab4:2:9 Bb4:2:12 C5:1:8 Db5:1:9 Eb5:1:12 F5:1:13 G5:1:15 Ab5:1:16 Bb5:1:18 C6:1:20 Db6:1:21 Eb6:1:23"},
+{scalekey:"Db",	scaletype:"Major", neckposition:0,	scalestartindex:6,	scalenotes:"F2:6:1 Gb2:6:2 Ab2:6:4 Bb2:5:1 C3:5:3 Db3:5:4 Eb3:4:1 F3:4:3 Gb3:3:0 Ab3:3:1 Bb3:2:0 C4:2:1 Db4:2:2 Eb4:1:0 F4:1:1 Gb4:1:2 Ab4:1:4 Bb4:1:7 C5:1:8 Db5:1:9 Eb5:1:12 F5:1:13 Gb5:1:14 Ab5:1:16 Bb5:1:18 C6:1:20 Db6:1:21 Eb6:1:23"},
+{scalekey:"Db",	scaletype:"Major", neckposition:2,	scalestartindex:6,	scalenotes:"F2:6:1 Gb2:6:2 Ab2:6:4 Bb2:5:1 C3:5:3 Db3:5:4 Eb3:4:1 F3:4:3 Gb3:4:5 Ab3:3:1 Bb3:3:4 C4:3:5 Db4:2:2 Eb4:2:5 F4:2:6 Gb4:1:2 Ab4:1:4 Bb4:1:7 C5:1:8 Db5:1:9 Eb5:1:12 F5:1:13 Gb5:1:14 Ab5:1:16 Bb5:1:18 C6:1:20 Db6:1:21 Eb6:1:23"},
+{scalekey:"Db",	scaletype:"Major", neckposition:5,	scalestartindex:6,	scalenotes:"F2:6:1 Gb2:6:2 Ab2:6:4 Bb2:6:6 C3:6:8 Db3:5:4 Eb3:5:6 F3:5:8 Gb3:4:5 Ab3:4:6 Bb3:3:4 C4:3:5 Db4:3:6 Eb4:2:5 F4:2:6 Gb4:2:7 Ab4:1:4 Bb4:1:7 C5:1:8 Db5:1:9 Eb5:1:12 F5:1:13 Gb5:1:14 Ab5:1:16 Bb5:1:18 C6:1:20 Db6:1:21 Eb6:1:23"},
+{scalekey:"Db",	scaletype:"Major", neckposition:7,	scalestartindex:6,	scalenotes:"F2:6:1 Gb2:6:2 Ab2:6:4 Bb2:6:6 C3:6:8 Db3:6:9 Eb3:5:6 F3:5:8 Gb3:5:10 Ab3:4:6 Bb3:4:9 C4:4:10 Db4:3:6 Eb4:3:9 F4:3:10 Gb4:2:7 Ab4:2:9 Bb4:1:7 C5:1:8 Db5:1:9 Eb5:1:12 F5:1:13 Gb5:1:14 Ab5:1:16 Bb5:1:18 C6:1:20 Db6:1:21 Eb6:1:23"},
+{scalekey:"Db",	scaletype:"Major", neckposition:9,	scalestartindex:6,	scalenotes:"F2:6:1 Gb2:6:2 Ab2:6:4 Bb2:6:6 C3:6:8 Db3:6:9 Eb3:6:11 F3:5:8 Gb3:5:10 Ab3:5:11 Bb3:4:9 C4:4:10 Db4:4:11 Eb4:3:9 F4:3:10 Gb4:3:11 Ab4:2:9 Bb4:2:12 C5:1:8 Db5:1:9 Eb5:1:12 F5:1:13 Gb5:1:14 Ab5:1:16 Bb5:1:18 C6:1:20 Db6:1:21 Eb6:1:23"},
+{scalekey:"Gb",	scaletype:"Major", neckposition:0,	scalestartindex:2,	scalenotes:"F2:6:1 Gb2:6:2 Ab2:6:4 Bb2:5:1 Cb3:5:2 Db3:5:4 Eb3:4:1 F3:4:3 Gb3:3:0 Ab3:3:1 Bb3:2:0 Cb4:2:0 Db4:2:2 Eb4:1:0 F4:1:1 Gb4:1:2 Ab4:1:4 Bb4:1:7 Cb5:1:7 Db5:1:9 Eb5:1:12 F5:1:13 Gb5:1:14 Ab5:1:16 Bb5:1:18 Cb6:1:19 Db6:1:21 Eb6:1:23"},
+{scalekey:"Gb",	scaletype:"Major", neckposition:2,	scalestartindex:2,	scalenotes:"F2:6:1 Gb2:6:2 Ab2:6:4 Bb2:5:1 Cb3:5:2 Db3:5:4 Eb3:4:1 F3:4:3 Gb3:4:5 Ab3:3:1 Bb3:3:4 Cb4:3:4 Db4:2:2 Eb4:2:5 F4:2:6 Gb4:1:2 Ab4:1:4 Bb4:1:7 Cb5:1:7 Db5:1:9 Eb5:1:12 F5:1:13 Gb5:1:14 Ab5:1:16 Bb5:1:18 Cb6:1:19 Db6:1:21 Eb6:1:23"},
+{scalekey:"Gb",	scaletype:"Major", neckposition:5,	scalestartindex:2,	scalenotes:"F2:6:1 Gb2:6:2 Ab2:6:4 Bb2:6:6 Cb3:6:7 Db3:5:4 Eb3:5:6 F3:5:8 Gb3:4:5 Ab3:4:6 Bb3:3:4 Cb4:3:4 Db4:3:6 Eb4:2:5 F4:2:6 Gb4:2:7 Ab4:1:4 Bb4:1:7 Cb5:1:7 Db5:1:9 Eb5:1:12 F5:1:13 Gb5:1:14 Ab5:1:16 Bb5:1:18 Cb6:1:19 Db6:1:21 Eb6:1:23"},
+{scalekey:"Gb",	scaletype:"Major", neckposition:7,	scalestartindex:2,	scalenotes:"F2:6:1 Gb2:6:2 Ab2:6:4 Bb2:6:6 Cb3:6:7 Db3:6:9 Eb3:5:6 F3:5:8 Gb3:5:10 Ab3:4:6 Bb3:4:9 Cb4:4:9 Db4:3:6 Eb4:3:9 F4:3:10 Gb4:2:7 Ab4:2:9 Bb4:1:7 Cb5:1:7 Db5:1:9 Eb5:1:12 F5:1:13 Gb5:1:14 Ab5:1:16 Bb5:1:18 Cb6:1:19 Db6:1:21 Eb6:1:23"},
+{scalekey:"Gb",	scaletype:"Major", neckposition:9,	scalestartindex:2,	scalenotes:"F2:6:1 Gb2:6:2 Ab2:6:4 Bb2:6:6 Cb3:6:7 Db3:6:9 Eb3:6:11 F3:5:8 Gb3:5:10 Ab3:5:11 Bb3:4:9 Cb4:4:9 Db4:4:11 Eb4:3:9 F4:3:10 Gb4:3:11 Ab4:2:9 Bb4:2:12 Cb5:1:7 Db5:1:9 Eb5:1:12 F5:1:13 Gb5:1:14 Ab5:1:16 Bb5:1:18 Cb6:1:19 Db6:1:21 Eb6:1:23"}
 ]; 
 
 testfield = document.getElementById("testfield");
@@ -110,7 +166,13 @@ testfield.innerHTML = "Config complete";
 
 bpmfield = document.getElementById("bpmfield");
 bpmvaluefield = document.getElementById("bpmvaluefield");
-scale = document.getElementById("scalenotesfield").innerHTML.trim().split(" ");
+
+scalekey = document.getElementById("scalekeyfield").innerHTML.trim();
+scaletype = document.getElementById("scaletypefield").innerHTML.trim();
+neckposition = Number(document.getElementById("neckpositionfield").innerHTML.trim());
+scalestring = (document.getElementById("scalenotesfield").innerHTML.trim() != "") ? document.getElementById("scalenotesfield").innerHTML.trim() : GetScale(scalekey, scaletype, neckposition);
+
+scale = scalestring.split(" ");
 pattern = document.getElementById("patternnotesfield").innerHTML.trim().split(" ");
 patternrepeatsfield = document.getElementById("patternrepeatsfield");
 patternrepeats = (patternrepeatsfield.innerHTML === "true") ? true : false;
@@ -242,6 +304,55 @@ if (document.getElementById("playbuttonfield") != null) {
 SetFieldValueByNameOrId("startingstringfield", patternnotes[0][3]);
 SetFieldValueByNameOrId("startingfretfield", patternnotes[0][4]);
 SetFieldValueByNameOrId("startingnotenamefield", patternnotes[0][2]);
+}
+
+function FindScale(scalekey="", scaletype="", neckposition=0) {
+	for (var i=0; i < scalelist.length; i++) {
+		if ((scalelist[i].scalekey == scalekey) && (scalelist[i].scaletype == scaletype) && (scalelist[i].neckposition == neckposition)) {
+			return scalelist[i];
+		}
+	}
+	return null;
+}
+
+function GetScale(scalekey="", scaletype="", neckposition=0) {
+	var scaleitem = FindScale(scalekey, scaletype, neckposition);
+	if (scaleitem == null) {
+		scaleitem = DeriveScale(scalekey, scaletype, neckposition);
+	}
+	return scaleitem;
+}
+
+function DeriveScale(scalekey="", scaletype="", neckposition=0) {
+	var scalekeys = ["A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab"];
+	var tmpscaleitem = {scalekey:"", scaletype:"", neckposition:0, scalestartindex:0, scalenotes:""};
+	tmpscaleitem.scalekey = scalekey;
+	tmpscaleitem.scaletype = scaletype;
+	tmpscaleitem.neckposition = neckposition;
+
+	var relativemajorkey;
+	var scaleindex = scalekeys.indexOf(scalekey);
+	if (scaleindex != null) {
+		var scaleindexoffset = 0;
+		switch (scaletype.toLowerCase()) {
+			case "ionian":				scaleindexoffset = 0; startoffset = 0; break;
+			case "major":				scaleindexoffset = 0; startoffset = 0; break;
+			case "pentatonic major":	scaleindexoffset = 0; startoffset = 0; break;
+			case "dorian":				scaleindexoffset = 2; startoffset = 6; break;
+			case "phrygian":			scaleindexoffset = 4; startoffset = 5; break;
+			case "lydian":				scaleindexoffset = 5; startoffset = 4; break;
+			case "mixolydian":			scaleindexoffset = 7; startoffset = 3; break;
+			case "minor":				scaleindexoffset = 9; startoffset = 2; break;
+			case "pentatonic minor":	scaleindexoffset = 9; startoffset = 2; break;
+			case "locrian":				scaleindexoffset = 11; startoffset = 1; break;
+		}
+		scaleindex = ((scaleindex - scaleoffset) < 0) ? (scaleindex - scaleoffset + 12) : (scaleindex - scaleoffset);
+		relativemajorkey = scalekeys[scaleindex];
+		scaleitem = FindScale(relativemajorkey, "major", neckposition);
+		tmpscaleitem.scalestartindex = ((scaleitem.scalestartindex - startoffset) <= 0)) ? scaleitem.scalestartindex - startoffset + 7 : scaleitem.scalestartindex - startoffset;
+		tmpscaleitem.scalenotes = scaleitem.scalenotes;
+	}	
+	return tmpscaleitem;
 }
 
 function InitConfig(cardscope) {
