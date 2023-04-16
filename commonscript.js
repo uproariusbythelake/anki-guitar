@@ -173,31 +173,11 @@ testfield.innerHTML = "Config complete";
 bpmfield = document.getElementById("bpmfield");
 bpmvaluefield = document.getElementById("bpmvaluefield");
 
-
 scalekey = (document.getElementById("scalekeyfield") != null) ? document.getElementById("scalekeyfield").innerHTML.trim() : "";
 scaletype = (document.getElementById("scaletypefield") != null) ? document.getElementById("scaletypefield").innerHTML.trim() : "";
 neckposition = (document.getElementById("neckposition") != null) ? document.getElementById("neckposition").innerHTML.trim() : "";
-scalestring = (document.getElementById("scalenotesfield") != null) ? document.getElementById("scalenotesfield").innerHTML.trim() : "";
-scalestartindex = (document.getElementById("scalestartindexfield") != null) ? document.getElementById("scalestartindexfield").innerHTML.trim() : "";
+scalenotes = GetScale(scalekey, scaletype, neckposition);
 
-if ((scalestring == null) || (scalestring == "")) {
-	scaleitem = GetScale(scalekey, scaletype, neckposition);
-	if (scaleitem != null) {
-		scalestring = scaleitem.scalenotes;
-		scalestartindex = scaleitem.scalestartindex;
-	}
-}
-
-if ((scalestartindex == "") || (scalestartindex == 0)) {
-	scalestartindex = 0;
-}
-else {
-	scalestartindex = scalestartindex - 1;
-}
-
-console.log("Using scale", scalekey, ":", scaletype, ":", neckposition, ":", scalestring);
-
-scale = scalestring.split(" ");
 pattern = document.getElementById("patternnotesfield").innerHTML.trim().split(" ");
 patternrepeatsfield = document.getElementById("patternrepeatsfield");
 patternrepeats = (patternrepeatsfield.innerHTML === "true") ? true : false;
@@ -213,16 +193,15 @@ SetBPM(startbpm);
 
 notesShown = false;
 
-
-scalenotes = {};
 patternnotes = {};
-
-for (i=0; i < scale.length; i++) {
-	scalenotes[i] = scale[i].split(":");
-}
-
 for (i=0; i < pattern.length; i++) {
-	patternnotes[i] = pattern[i].split(":");
+	if (pattern[i].includes(":")) {
+		patternnotes[i] = pattern[i].split(":");
+	}
+	else {
+		patternnotes[i][0] = pattern[i];
+		patternnotes[i][1] = "4n";
+	}
 }
 
 patternsize = pattern.length;
@@ -327,6 +306,54 @@ SetFieldValueByNameOrId("startingfretfield", patternnotes[0][4]);
 SetFieldValueByNameOrId("startingnotenamefield", patternnotes[0][2]);
 }
 
+function GetScale(scalekey="", scaletype="", neckposition=0) {
+	scalestring = (document.getElementById("scalenotesfield") != null) ? document.getElementById("scalenotesfield").innerHTML.trim() : "";
+	scalestartindex = (document.getElementById("scalestartindexfield") != null) ? document.getElementById("scalestartindexfield").innerHTML.trim() : "";
+
+	var scaleitem;
+	var baseneckposition;
+	if ((scalestring == null) || (scalestring == "")) {
+		baseneckposition = (Number(neckposition) >= 12) ? Number(neckposition) - 12 : neckposition; 
+		var scaleitem = FindScale(scalekey, scaletype, baseneckposition);
+		if (scaleitem == null) {
+			scaleitem = DeriveScale(scalekey, scaletype, baseneckposition);
+		}
+		
+		if (scaleitem != null) {
+			scalestring = scaleitem.scalenotes;
+			scalestartindex = scaleitem.scalestartindex;
+			
+			if (neckposition >= 12) {
+				let newscalestring = scalestring.replace(/([A-G][b|\#]?)(\d)(:\d:)(\d{1,2})/g, function(match, g1, g2, g3, g4) {
+					let octavenum = Number(g2) + 1;
+					let fretnum = Number(g4) + 12;
+					return g1 + octavenum + g3 + fretnum;
+				});					
+				scalestring = newscalestring;
+			}
+		}
+	}
+	
+
+	if ((scalestartindex == "") || (scalestartindex == 0)) {
+		scalestartindex = 0;
+	}
+	else {
+		scalestartindex = scalestartindex - 1;
+	}
+	
+	scale = scalestring.split(" ");
+	
+	scalenotes = {};
+
+	for (i=0; i < scale.length; i++) {
+		scalenotes[i] = scale[i].split(":");
+	}
+	
+	console.log("Using scale", scalekey, ":", scaletype, ":", neckposition, ":", scalestartindex, ":", scalestring);
+	return scalenotes;
+}
+
 function FindScale(scalekey="", scaletype="", neckposition=0) {
 	for (var i=0; i < scalelist.length; i++) {
 		if ((scalelist[i].scalekey.toLowerCase() == scalekey.toLowerCase()) && (scalelist[i].scaletype.toLowerCase() == scaletype.toLowerCase()) && (Number(scalelist[i].neckposition) == Number(neckposition))) {
@@ -336,14 +363,6 @@ function FindScale(scalekey="", scaletype="", neckposition=0) {
 	}
 	console.log("FindScale", scalekey, scaletype, neckposition, null);
 	return null;
-}
-
-function GetScale(scalekey="", scaletype="", neckposition=0) {
-	var scaleitem = FindScale(scalekey, scaletype, neckposition);
-	if (scaleitem == null) {
-		scaleitem = DeriveScale(scalekey, scaletype, neckposition);
-	}
-	return scaleitem;
 }
 
 function DeriveScale(scalekey="", scaletype="", neckposition=0) {
