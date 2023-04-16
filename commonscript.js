@@ -329,7 +329,7 @@ SetFieldValueByNameOrId("startingnotenamefield", patternnotes[0][2]);
 
 function FindScale(scalekey="", scaletype="", neckposition=0) {
 	for (var i=0; i < scalelist.length; i++) {
-		if ((scalelist[i].scalekey == scalekey) && (scalelist[i].scaletype == scaletype) && (Number(scalelist[i].neckposition) == Number(neckposition))) {
+		if ((scalelist[i].scalekey.toLowerCase() == scalekey.toLowerCase()) && (scalelist[i].scaletype.toLowerCase() == scaletype.toLowerCase()) && (Number(scalelist[i].neckposition) == Number(neckposition))) {
 			console.log("FindScale", scalekey, scaletype, neckposition, scalelist[i]);
 			return scalelist[i];
 		}
