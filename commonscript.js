@@ -50,7 +50,11 @@ configitems = [
 (1,eval)('var bpm;');
 (1,eval)('var beatsecs;');
 (1,eval)('var notesShown;');
+(1,eval)('var scalekey;');
+(1,eval)('var scaletype;');
+(1,eval)('var neckposition;');
 (1,eval)('var scalestartindex;');
+(1,eval)('var scaleitem;');
 (1,eval)('var scalenotes;');
 (1,eval)('var patternnotes;');
 (1,eval)('var patternsize;');
@@ -167,10 +171,18 @@ testfield.innerHTML = "Config complete";
 bpmfield = document.getElementById("bpmfield");
 bpmvaluefield = document.getElementById("bpmvaluefield");
 
-scalekey = document.getElementById("scalekeyfield").innerHTML.trim();
-scaletype = document.getElementById("scaletypefield").innerHTML.trim();
-neckposition = Number(document.getElementById("neckpositionfield").innerHTML.trim());
-scalestring = (document.getElementById("scalenotesfield").innerHTML.trim() != "") ? document.getElementById("scalenotesfield").innerHTML.trim() : GetScale(scalekey, scaletype, neckposition);
+scalekey = (document.getElementById("scalekeyfield") != null) ? document.getElementById("scalekeyfield").innerHTML.trim() : "";
+scaletype = (document.getElementById("scaletypefield") != null) ? document.getElementById("scaletypefield").innerHTML.trim() : "";
+neckposition = (document.getElementById("neckpositionfield") != null) ? document.getElementById("neckpositionfield").innerHTML.trim() : "";
+scalestring = (document.getElementById("scalenotesfield") != null) ? document.getElementById("scalenotesfield").innerHTML.trim() : "";
+if ((scalestring == null) || (scalestring == "")) {
+	scaleitem = GetScale(scalekey, scaletype, neckposition);
+	if (scaleitem != null) {
+		scalestring = scaleitem.scalenotes;
+		scalestartindex = scaleitem.scalestartindex;
+	}
+}
+console.log("Using scale", scalekey, ":", scaletype, ":", neckposition, ":", scalestring);
 
 scale = scalestring.split(" ");
 pattern = document.getElementById("patternnotesfield").innerHTML.trim().split(" ");
@@ -308,10 +320,12 @@ SetFieldValueByNameOrId("startingnotenamefield", patternnotes[0][2]);
 
 function FindScale(scalekey="", scaletype="", neckposition=0) {
 	for (var i=0; i < scalelist.length; i++) {
-		if ((scalelist[i].scalekey == scalekey) && (scalelist[i].scaletype == scaletype) && (scalelist[i].neckposition == neckposition)) {
+		if ((scalelist[i].scalekey == scalekey) && (scalelist[i].scaletype == scaletype) && (Number(scalelist[i].neckposition) == Number(neckposition))) {
+			console.log("FindScale", scalekey, scaletype, neckposition, scalelist[i]);
 			return scalelist[i];
 		}
 	}
+	console.log("FindScale", scalekey, scaletype, neckposition, null);
 	return null;
 }
 
@@ -352,6 +366,8 @@ function DeriveScale(scalekey="", scaletype="", neckposition=0) {
 		tmpscaleitem.scalestartindex = ((scaleitem.scalestartindex - startoffset) <= 0)) ? scaleitem.scalestartindex - startoffset + 7 : scaleitem.scalestartindex - startoffset;
 		tmpscaleitem.scalenotes = scaleitem.scalenotes;
 	}	
+	console.log("DeriveScale:", scalekey, scaletype, neckposition, tmpscaleitem);
+	console.log("DeriveScale: relative major is", relativemajorkey);
 	return tmpscaleitem;
 }
 
