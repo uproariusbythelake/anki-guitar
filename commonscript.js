@@ -171,10 +171,13 @@ testfield.innerHTML = "Config complete";
 bpmfield = document.getElementById("bpmfield");
 bpmvaluefield = document.getElementById("bpmvaluefield");
 
+
 scalekey = (document.getElementById("scalekeyfield") != null) ? document.getElementById("scalekeyfield").innerHTML.trim() : "";
 scaletype = (document.getElementById("scaletypefield") != null) ? document.getElementById("scaletypefield").innerHTML.trim() : "";
 neckposition = (document.getElementById("neckposition") != null) ? document.getElementById("neckposition").innerHTML.trim() : "";
 scalestring = (document.getElementById("scalenotesfield") != null) ? document.getElementById("scalenotesfield").innerHTML.trim() : "";
+scalestartindex = (document.getElementById("scalestartindexfield") != null) ? document.getElementById("scalestartindexfield").innerHTML.trim() : "";
+
 if ((scalestring == null) || (scalestring == "")) {
 	scaleitem = GetScale(scalekey, scaletype, neckposition);
 	if (scaleitem != null) {
@@ -182,6 +185,14 @@ if ((scalestring == null) || (scalestring == "")) {
 		scalestartindex = scaleitem.scalestartindex;
 	}
 }
+
+if ((scalestartindex == "") || (scalestartindex == 0)) {
+	scalestartindex = 0;
+}
+else {
+	scalestartindex = scalestartindex - 1;
+}
+
 console.log("Using scale", scalekey, ":", scaletype, ":", neckposition, ":", scalestring);
 
 scale = scalestring.split(" ");
@@ -200,13 +211,6 @@ SetBPM(startbpm);
 
 notesShown = false;
 
-scalestartindex = document.getElementById("scalestartindexfield").innerHTML;
-if ((scalestartindex == "") || (scalestartindex == 0)) {
-	scalestartindex = 0;
-}
-else {
-	scalestartindex = scalestartindex - 1;
-}
 
 scalenotes = {};
 patternnotes = {};
