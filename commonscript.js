@@ -1013,7 +1013,6 @@ function PlayTab(notenum=null, waitforstart=true) {
 			console.log("Adding pause for playback to loopend", pausemultiple*patternduration);
 			loopend += pausemultiple*patternduration;
 		}
-	}
 		
 		loopend += 8*beatsecs; 
 		console.log("Loop end: ", loopend);
