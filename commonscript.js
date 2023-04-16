@@ -1010,6 +1010,7 @@ function PlayTab(notenum=null, waitforstart=true) {
 			}
 		}
 		if (pauseforplayback == true) {
+			console.log("Adding pause for playback to loopend", pausemultiple*patternduration);
 			loopend += pausemultiple*patternduration;
 		}
 	}
