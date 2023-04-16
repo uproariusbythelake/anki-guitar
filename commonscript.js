@@ -363,7 +363,7 @@ function DeriveScale(scalekey="", scaletype="", neckposition=0) {
 		scaleindex = ((scaleindex - scaleoffset) < 0) ? (scaleindex - scaleoffset + 12) : (scaleindex - scaleoffset);
 		relativemajorkey = scalekeys[scaleindex];
 		scaleitem = FindScale(relativemajorkey, "major", neckposition);
-		tmpscaleitem.scalestartindex = ((scaleitem.scalestartindex - startoffset) <= 0)) ? scaleitem.scalestartindex - startoffset + 7 : scaleitem.scalestartindex - startoffset;
+		tmpscaleitem.scalestartindex = ((scaleitem.scalestartindex - startoffset) <= 0) ? scaleitem.scalestartindex - startoffset + 7 : scaleitem.scalestartindex - startoffset;
 		tmpscaleitem.scalenotes = scaleitem.scalenotes;
 	}	
 	console.log("DeriveScale:", scalekey, scaletype, neckposition, tmpscaleitem);
