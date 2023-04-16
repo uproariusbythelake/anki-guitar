@@ -133,9 +133,9 @@ scalelist = [
 {scalekey:"Db",	scaletype:"Major", neckposition:9,	scalestartindex:6,	scalenotes:"F2:6:1 Gb2:6:2 Ab2:6:4 Bb2:6:6 C3:6:8 Db3:6:9 Eb3:6:11 F3:5:8 Gb3:5:10 Ab3:5:11 Bb3:4:9 C4:4:10 Db4:4:11 Eb4:3:9 F4:3:10 Gb4:3:11 Ab4:2:9 Bb4:2:12 C5:1:8 Db5:1:9 Eb5:1:12 F5:1:13 Gb5:1:14 Ab5:1:16 Bb5:1:18 C6:1:20 Db6:1:21 Eb6:1:23"},
 {scalekey:"Gb",	scaletype:"Major", neckposition:0,	scalestartindex:2,	scalenotes:"F2:6:1 Gb2:6:2 Ab2:6:4 Bb2:5:1 Cb3:5:2 Db3:5:4 Eb3:4:1 F3:4:3 Gb3:3:0 Ab3:3:1 Bb3:2:0 Cb4:2:0 Db4:2:2 Eb4:1:0 F4:1:1 Gb4:1:2 Ab4:1:4 Bb4:1:7 Cb5:1:7 Db5:1:9 Eb5:1:12 F5:1:13 Gb5:1:14 Ab5:1:16 Bb5:1:18 Cb6:1:19 Db6:1:21 Eb6:1:23"},
 {scalekey:"Gb",	scaletype:"Major", neckposition:2,	scalestartindex:2,	scalenotes:"F2:6:1 Gb2:6:2 Ab2:6:4 Bb2:5:1 Cb3:5:2 Db3:5:4 Eb3:4:1 F3:4:3 Gb3:4:5 Ab3:3:1 Bb3:3:4 Cb4:3:4 Db4:2:2 Eb4:2:5 F4:2:6 Gb4:1:2 Ab4:1:4 Bb4:1:7 Cb5:1:7 Db5:1:9 Eb5:1:12 F5:1:13 Gb5:1:14 Ab5:1:16 Bb5:1:18 Cb6:1:19 Db6:1:21 Eb6:1:23"},
-{scalekey:"Gb",	scaletype:"Major", neckposition:5,	scalestartindex:2,	scalenotes:"F2:6:1 Gb2:6:2 Ab2:6:4 Bb2:6:6 Cb3:6:7 Db3:5:4 Eb3:5:6 F3:5:8 Gb3:4:5 Ab3:4:6 Bb3:3:4 Cb4:3:4 Db4:3:6 Eb4:2:5 F4:2:6 Gb4:2:7 Ab4:1:4 Bb4:1:7 Cb5:1:7 Db5:1:9 Eb5:1:12 F5:1:13 Gb5:1:14 Ab5:1:16 Bb5:1:18 Cb6:1:19 Db6:1:21 Eb6:1:23"},
-{scalekey:"Gb",	scaletype:"Major", neckposition:7,	scalestartindex:2,	scalenotes:"F2:6:1 Gb2:6:2 Ab2:6:4 Bb2:6:6 Cb3:6:7 Db3:6:9 Eb3:5:6 F3:5:8 Gb3:5:10 Ab3:4:6 Bb3:4:9 Cb4:4:9 Db4:3:6 Eb4:3:9 F4:3:10 Gb4:2:7 Ab4:2:9 Bb4:1:7 Cb5:1:7 Db5:1:9 Eb5:1:12 F5:1:13 Gb5:1:14 Ab5:1:16 Bb5:1:18 Cb6:1:19 Db6:1:21 Eb6:1:23"},
-{scalekey:"Gb",	scaletype:"Major", neckposition:9,	scalestartindex:2,	scalenotes:"F2:6:1 Gb2:6:2 Ab2:6:4 Bb2:6:6 Cb3:6:7 Db3:6:9 Eb3:6:11 F3:5:8 Gb3:5:10 Ab3:5:11 Bb3:4:9 Cb4:4:9 Db4:4:11 Eb4:3:9 F4:3:10 Gb4:3:11 Ab4:2:9 Bb4:2:12 Cb5:1:7 Db5:1:9 Eb5:1:12 F5:1:13 Gb5:1:14 Ab5:1:16 Bb5:1:18 Cb6:1:19 Db6:1:21 Eb6:1:23"}
+{scalekey:"Gb",	scaletype:"Major", neckposition:5,	scalestartindex:9,	scalenotes:"F2:6:1 Gb2:6:2 Ab2:6:4 Bb2:6:6 Cb3:6:7 Db3:5:4 Eb3:5:6 F3:5:8 Gb3:4:5 Ab3:4:6 Bb3:3:4 Cb4:3:4 Db4:3:6 Eb4:2:5 F4:2:6 Gb4:2:7 Ab4:1:4 Bb4:1:7 Cb5:1:7 Db5:1:9 Eb5:1:12 F5:1:13 Gb5:1:14 Ab5:1:16 Bb5:1:18 Cb6:1:19 Db6:1:21 Eb6:1:23"},
+{scalekey:"Gb",	scaletype:"Major", neckposition:7,	scalestartindex:9,	scalenotes:"F2:6:1 Gb2:6:2 Ab2:6:4 Bb2:6:6 Cb3:6:7 Db3:6:9 Eb3:5:6 F3:5:8 Gb3:5:10 Ab3:4:6 Bb3:4:9 Cb4:4:9 Db4:3:6 Eb4:3:9 F4:3:10 Gb4:2:7 Ab4:2:9 Bb4:1:7 Cb5:1:7 Db5:1:9 Eb5:1:12 F5:1:13 Gb5:1:14 Ab5:1:16 Bb5:1:18 Cb6:1:19 Db6:1:21 Eb6:1:23"},
+{scalekey:"Gb",	scaletype:"Major", neckposition:9,	scalestartindex:9,	scalenotes:"F2:6:1 Gb2:6:2 Ab2:6:4 Bb2:6:6 Cb3:6:7 Db3:6:9 Eb3:6:11 F3:5:8 Gb3:5:10 Ab3:5:11 Bb3:4:9 Cb4:4:9 Db4:4:11 Eb4:3:9 F4:3:10 Gb4:3:11 Ab4:2:9 Bb4:2:12 Cb5:1:7 Db5:1:9 Eb5:1:12 F5:1:13 Gb5:1:14 Ab5:1:16 Bb5:1:18 Cb6:1:19 Db6:1:21 Eb6:1:23"}
 ]; 
 
 testfield = document.getElementById("testfield");
@@ -369,7 +369,7 @@ function DeriveScale(scalekey="", scaletype="", neckposition=0) {
 			case "pentatonic minor":	scaleindexoffset = 9; startoffset = 2; break;
 			case "locrian":				scaleindexoffset = 11; startoffset = 1; break;
 		}
-		scaleindex = ((scaleindex - scaleoffset) < 0) ? (scaleindex - scaleoffset + 12) : (scaleindex - scaleoffset);
+		scaleindex = ((scaleindex - scaleindexoffset) < 0) ? (scaleindex - scaleindexoffset + 12) : (scaleindex - scaleindexoffset);
 		relativemajorkey = scalekeys[scaleindex];
 		scaleitem = FindScale(relativemajorkey, "major", neckposition);
 		tmpscaleitem.scalestartindex = ((scaleitem.scalestartindex - startoffset) <= 0) ? scaleitem.scalestartindex - startoffset + 7 : scaleitem.scalestartindex - startoffset;
