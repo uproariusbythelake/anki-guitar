@@ -35,6 +35,7 @@ configitems = [
 ]; 
 (1,eval)('var deckname;');
 (1,eval)('var cardtype;');
+(1,eval)('var notetype;');
 (1,eval)('var patternid;');
 (1,eval)('var deckprefix;');
 (1,eval)('var configprefix;');
@@ -141,6 +142,7 @@ testfield = document.getElementById("testfield");
 testfield.innerHTML = "Declared Global Vars";
 deckname = document.getElementById("decknamefield").innerHTML;
 cardtype = document.getElementById("cardtypefield").innerHTML;
+notetype = (document.getElementById("notetypefield") != null) ? document.getElementById("notetypefield").innerHTML.trim() : "";
 patternid = document.getElementById("patternidfield").innerHTML; 
 deckprefix = deckname + "/";
 configprefix = deckprefix;
@@ -263,7 +265,10 @@ else {
 		} 
 }
  
-ConfigPatternDuration(); 
+if (notetype != "Basic Melody") {
+	ConfigPatternDuration(); 
+}
+	
 
 for (i=0; i < pattern.length; i += 1) {
 		var tempnotearr = getNoteWithAccidentals(i);
