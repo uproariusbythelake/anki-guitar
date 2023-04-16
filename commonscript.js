@@ -1009,6 +1009,11 @@ function PlayTab(notenum=null, waitforstart=true) {
 					}
 			}
 		}
+		if (pauseforplayback == true) {
+			loopend += pausemultiple*patternduration;
+		}
+	}
+		
 		loopend += 8*beatsecs; 
 		console.log("Loop end: ", loopend);
 		timeout = window.setTimeout(PlayTab, 1000*(loopend - Tone.now()), null, loopend);
