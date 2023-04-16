@@ -173,7 +173,7 @@ bpmvaluefield = document.getElementById("bpmvaluefield");
 
 scalekey = (document.getElementById("scalekeyfield") != null) ? document.getElementById("scalekeyfield").innerHTML.trim() : "";
 scaletype = (document.getElementById("scaletypefield") != null) ? document.getElementById("scaletypefield").innerHTML.trim() : "";
-neckposition = (document.getElementById("neckpositionfield") != null) ? document.getElementById("neckpositionfield").innerHTML.trim() : "";
+neckposition = (document.getElementById("neckposition") != null) ? document.getElementById("neckposition").innerHTML.trim() : "";
 scalestring = (document.getElementById("scalenotesfield") != null) ? document.getElementById("scalenotesfield").innerHTML.trim() : "";
 if ((scalestring == null) || (scalestring == "")) {
 	scaleitem = GetScale(scalekey, scaletype, neckposition);
