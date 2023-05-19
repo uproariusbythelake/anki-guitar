@@ -423,10 +423,11 @@ function DeriveFromMajorScale(scalekey="", scaletype="", neckposition=0) {
 		
 		switch (scaletype.toLowerCase()) {
 			case "pentatonic major":
-				regex = new RegExp("(" + notename[4] + "\d:\d:\d{1,2})\s*", "g");			
+				regex = new RegExp("(" + notename[4] + "\\d:\\d:\\d{1,2})\\s*", "g");			
 				newscalestring = tmpscaleitem.scalestring.replace(regex, "").trim();					
+				tmpscaleitem.scalestring = newscalestring;
 				console.log("Dropped 4th", notename[4], "for", scaletype, newscalestring);
-				regex = new RegExp("(" + notename[7] + "\d:\d:\d{1,2})", "g");			
+				regex = new RegExp("(" + notename[7] + "\\d:\\d:\\d{1,2})\\s*", "g");			
 				newscalestring = tmpscaleitem.scalestring.replace(regex, "").trim();					
 				tmpscaleitem.scalestring = newscalestring;
 				console.log("Dropped 7th", notename[7], "for", scaletype, newscalestring);
@@ -436,6 +437,7 @@ function DeriveFromMajorScale(scalekey="", scaletype="", neckposition=0) {
 				regex = new RegExp("(" + notename[2] + "\\d:\\d:\\d{1,2})\\s*", "g");			
 				console.log("Regular expression is", regex);
 				newscalestring = tmpscaleitem.scalestring.replace(regex, "").trim();					
+				tmpscaleitem.scalestring = newscalestring;
 				console.log("Dropped 2nd", notename[2], "for", scaletype, newscalestring);
 				regex = new RegExp("(" + notename[6] + "\\d:\\d:\\d{1,2})\\s*", "g");			
 				newscalestring = tmpscaleitem.scalestring.replace(regex, "").trim();					
@@ -444,7 +446,7 @@ function DeriveFromMajorScale(scalekey="", scaletype="", neckposition=0) {
 				break;
 			
 			case "harmonic minor":
-				regex = new RegExp("(" + notename[7] + "\d:\d:\d{1,2})", "g");
+				regex = new RegExp("(" + notename[7] + "\\d:\\d:\\d{1,2})", "g");
 				newscalestring = tmpscaleitem.scalestring.replace(regex, function(match, g1) {
 					return GetNote(g1, 1);
 				});					
@@ -457,16 +459,17 @@ function DeriveFromMajorScale(scalekey="", scaletype="", neckposition=0) {
 				break;
 				
 			case "major blues":
-				regex = new RegExp("(" + notename[4] + "\d:\d:\d{1,2})\s*", "g");			
+				regex = new RegExp("(" + notename[4] + "\\d:\\d:\\d{1,2})\\s*", "g");			
 				newscalestring = tmpscaleitem.scalestring.replace(regex, "").trim();					
+				tmpscaleitem.scalestring = newscalestring;
 				console.log("Dropped 4th", notename[4], "for", scaletype, newscalestring);
-				regex = new RegExp("(" + notename[7] + "\d:\d:\d{1,2})", "g");			
+				regex = new RegExp("(" + notename[7] + "\\d:\\d:\\d{1,2})\\s*", "g");			
 				newscalestring = tmpscaleitem.scalestring.replace(regex, "").trim();					
 				tmpscaleitem.scalestring = newscalestring;
 				console.log("Dropped 7th", notename[7], "for", scaletype, newscalestring);
 
 				//Add blues notes of flat 3rds
-				regex = new RegExp("(" + notename[3] + "\d:\d:\d{1,2})", "g");
+				regex = new RegExp("(" + notename[3] + "\\d:\\d:\\d{1,2})", "g");
 				newscalestring = tmpscaleitem.scalestring.replace(regex, function(match, g1) {
 					return GetNote(g1, -1) + " " + g1;
 				});					
@@ -475,16 +478,17 @@ function DeriveFromMajorScale(scalekey="", scaletype="", neckposition=0) {
 				break;
 				
 			case "minor blues":
-				regex = new RegExp("(" + notename[2] + "\d:\d:\d{1,2})\s*", "g");			
+				regex = new RegExp("(" + notename[2] + "\\d:\\d:\\d{1,2})\\s*", "g");			
 				newscalestring = tmpscaleitem.scalestring.replace(regex, "").trim();					
+				tmpscaleitem.scalestring = newscalestring;
 				console.log("Dropped 2nd", notename[2], "for", scaletype, newscalestring);
-				regex = new RegExp("(" + notename[6] + "\d:\d:\d{1,2})", "g");			
+				regex = new RegExp("(" + notename[6] + "\\d:\\d:\\d{1,2})\\s*", "g");			
 				newscalestring = tmpscaleitem.scalestring.replace(regex, "").trim();					
 				tmpscaleitem.scalestring = newscalestring;
 				console.log("Dropped 6th", notename[6], "for", scaletype, newscalestring);
 				
 				//Add blues notes of flat 5ths
-				regex = new RegExp("(" + notename[5] + "\d:\d:\d{1,2})", "g");
+				regex = new RegExp("(" + notename[5] + "\\d:\\d:\\d{1,2})", "g");
 				newscalestring = tmpscaleitem.scalestring.replace(regex, function(match, g1) {
 					return GetNote(g1, -1) + " " + g1;
 				});					
