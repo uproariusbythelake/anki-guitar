@@ -434,6 +434,7 @@ function DeriveFromMajorScale(scalekey="", scaletype="", neckposition=0) {
 				
 			case "pentatonic minor":
 				regex = new RegExp("(" + notename[2] + "\d:\d:\d{1,2})\s*", "g");			
+				console.log("Regular expression is", regex);
 				newscalestring = tmpscaleitem.scalestring.replace(regex, "").trim();					
 				console.log("Dropped 2nd", notename[2], "for", scaletype, newscalestring);
 				regex = new RegExp("(" + notename[6] + "\d:\d:\d{1,2})", "g");			
