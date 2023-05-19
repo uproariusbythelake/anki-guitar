@@ -501,6 +501,7 @@ function DeriveFromMajorScale(scalekey="", scaletype="", neckposition=0) {
 		for (i=0; i < scale.length; i++) {
 			if (scale[i].search(regex) == 0) {				
 				tmpscaleitem.scalestartindex = i + 1;
+				break;
 			}
 		}
 	}	
