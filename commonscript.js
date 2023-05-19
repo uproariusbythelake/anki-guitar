@@ -529,7 +529,7 @@ function GetNote(notestring, semitones=0) {
 		}
 	}
 	console.log("Changed note", notestring, "by", semitones, "to", newnotestring);
-	return notestring;
+	return newnotestring;
 }
 	
 function GetNoteName(notename, semitones=0) {
