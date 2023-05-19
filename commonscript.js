@@ -498,7 +498,7 @@ function DeriveFromMajorScale(scalekey="", scaletype="", neckposition=0) {
 
 function GetNote(notestring, semitones=0) {
 	newnotestring = null;
-	if (notestring != null) && (notestring != "") {
+	if ((notestring != null) && (notestring != "")) {
 		note = notestring.trim().split(":");
 		newnotename = GetNoteName(note[0], semitones);		
 		if (newnotename != null) {
@@ -506,7 +506,7 @@ function GetNote(notestring, semitones=0) {
 			fretnum = Number(note[2]);
 			newstringnum = stringnum;
 			newfretnum = fretnum + semitones;
-			while ((newfretnum < 0) && (newstringnum < 6) {
+			while ((newfretnum < 0) && (newstringnum < 6)) {
 				newstringnum = newstringnum + 1;
 				newfretnum = (newstringnum == 3) ? newfretnum + 4 : newfretnum + 5;
 				
@@ -520,7 +520,7 @@ function GetNote(notestring, semitones=0) {
 	
 function GetNoteName(notename, semitones=0) {
 	newnotename = null;
-	if (notename != null) && (notename != "") {
+	if ((notename != null) && (notename != "")) {
 		chromaticnotes = scalelist[1].scalestring.trim().replace(/:\d:\d{1,2}/g, "").split(" ");
 		noteindex = chromaticnotes.indexOf(notename);
 		if (noteindex != null) {
