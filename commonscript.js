@@ -415,7 +415,8 @@ function DeriveFromMajorScale(scalekey="", scaletype="", neckposition=0) {
 		tmpscaleitem.scalestartindex = ((scaleitem.scalestartindex - startoffset) <= 0) ? scaleitem.scalestartindex - startoffset + 7 : scaleitem.scalestartindex - startoffset;
 		tmpscaleitem.scalestring = scaleitem.scalestring;
 		
-		scale = tmpscaleitem.scalestring.split(" ");		
+		scale = tmpscaleitem.scalestring.split(" ");	
+		var notename = [""];
 		for (i=1; i < 8; i++) {
 			notename[i] = scale[tmpscaleitem.scalestartindex + i - 2].split(":")[0].trim().replace(/\d/, "");
 		}
