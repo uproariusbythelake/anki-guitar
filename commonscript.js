@@ -535,7 +535,8 @@ function GetNote(notestring, semitones=0) {
 function GetNoteName(notename, semitones=0) {
 	newnotename = null;
 	if ((notename != null) && (notename != "")) {
-		chromaticnotes = scalelist[1].scalestring.trim().replace(/:\d:\d{1,2}/g, "").split(" ");
+		sharpflatscale = (semitones < 0) ? 1 : 0;
+		chromaticnotes = scalelist[sharpflatscale].scalestring.trim().replace(/:\d:\d{1,2}/g, "").split(" ");
 		noteindex = chromaticnotes.indexOf(notename);
 		if (noteindex != null) {
 			if ((noteindex + semitones > 0) && (noteindex + semitones < chromaticnotes.length)) {
@@ -543,7 +544,8 @@ function GetNoteName(notename, semitones=0) {
 			}
 		}
 		else {
-			chromaticnotes = scalelist[0].scalestring.trim().replace(/:\d:\d{1,2}/g, "").split(" ");
+			sharpflatscale = (sharpflatscale == 0) ? 1 : 0;
+			chromaticnotes = scalelist[sharpflatscale].scalestring.trim().replace(/:\d:\d{1,2}/g, "").split(" ");
 			noteindex = chromaticnotes.indexOf(notename);
 			if (noteindex != null) {
 				if ((noteindex + semitones > 0) && (noteindex + semitones < chromaticnotes.length)) {
