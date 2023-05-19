@@ -497,7 +497,12 @@ function DeriveFromMajorScale(scalekey="", scaletype="", neckposition=0) {
 				break;
 		}
 		regex = new RegExp(scalekey + "\\d:");
-		tmpscaleitem.scalestartindex = tmpscaleitem.scalestring.search(regex) + 1;
+		scale = tmpscaleitem.scalestring.split(" ");
+		for (i=0; i < scale.length; i++) {
+			if (scale[i].search(regex) == 0) {				
+				tmpscaleitem.scalestartindex = i + 1;
+			}
+		}
 	}	
 	console.log("DeriveScale:", scalekey, scaletype, neckposition, tmpscaleitem);
 	console.log("DeriveScale: relative major is", relativemajorkey);
