@@ -399,12 +399,14 @@ function DeriveFromMajorScale(scalekey="", scaletype="", neckposition=0) {
 			case "ionian":				scaleindexoffset = 0; startoffset = 0; break;
 			case "major":				scaleindexoffset = 0; startoffset = 0; break;
 			case "pentatonic major":	scaleindexoffset = 0; startoffset = 0; break;
+			case "major blues":			scaleindexoffset = 0; startoffset = 0; break;
 			case "dorian":				scaleindexoffset = 2; startoffset = 6; break;
 			case "phrygian":			scaleindexoffset = 4; startoffset = 5; break;
 			case "lydian":				scaleindexoffset = 5; startoffset = 4; break;
 			case "mixolydian":			scaleindexoffset = 7; startoffset = 3; break;
 			case "minor":				scaleindexoffset = 9; startoffset = 2; break;
 			case "pentatonic minor":	scaleindexoffset = 9; startoffset = 2; break;
+			case "minor blues":			scaleindexoffset = 9; startoffset = 2; break;
 			case "harmonic minor":		scaleindexoffset = 9; startoffset = 2; break;
 			case "melodic minor":		scaleindexoffset = 9; startoffset = 2; break;
 			case "locrian":				scaleindexoffset = 11; startoffset = 1; break;
