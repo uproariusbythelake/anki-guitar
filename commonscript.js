@@ -1315,7 +1315,9 @@ if (tabtable1 != null) {
 }
 
 function DisplayAlphaTab(alphanotes) {
+	console.log("Alphatab tablature notes: " + alphanotes);
 	var alphatabfield = document.getElementById('alphaTab');
+	console.log("Alphatab innerHTML default: " + alphatabfield.innerHTML);
 	alphatabfield.innerHTML += alphanotes;
 	var alphatabsettings = {
 				scale: 0.8,
