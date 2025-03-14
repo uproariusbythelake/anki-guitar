@@ -1305,6 +1305,7 @@ if (tabtable1 != null) {
 		var tabposfretval = patternnotes[c-1][4]; 
 		tabtable1.rows[rownum].cells[c].innerHTML = tabposfretval + "<sup>" + note + "</sup><sub>"; 
 		alphanotes += " " + tabposfretval + "." + patternnotes[c-1][3];
+		alphanotes += (c % 4 === 0) ? " | ";
 		if (tabtable2 != null) {
 		   if ((patternscaledegree == 0) && ((patternrepeats) || (patternid == 0))) {		
 			tabtable2.rows[rownum].cells[pattern.length + 1 - c].innerHTML = tabposfretval + "<sup>" + note + "</sup>";  
