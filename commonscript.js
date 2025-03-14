@@ -1256,7 +1256,7 @@ console.log("Display Tab");
 var tabtable1 = document.getElementById("scaletab1");
 var tabtable2 = document.getElementById("scaletab2");
 var tabstrings = ["E", "B", "G", "D", "A", "E"];
-var alphanotes = ":4 ";
+var alphanotes = ":4";
 
 if (tabtable1 != null) {
 	while(tabtable1.rows.length > 0) {
@@ -1304,7 +1304,7 @@ if (tabtable1 != null) {
 		var rownum = patternnotes[c-1][3] - 1;
 		var tabposfretval = patternnotes[c-1][4]; 
 		tabtable1.rows[rownum].cells[c].innerHTML = tabposfretval + "<sup>" + note + "</sup><sub>"; 
-		alphanotes += tabposfretval + "." + patternnotes[c-1][3];
+		alphanotes += " " + tabposfretval + "." + patternnotes[c-1][3];
 		if (tabtable2 != null) {
 		   if ((patternscaledegree == 0) && ((patternrepeats) || (patternid == 0))) {		
 			tabtable2.rows[rownum].cells[pattern.length + 1 - c].innerHTML = tabposfretval + "<sup>" + note + "</sup>";  
