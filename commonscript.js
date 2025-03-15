@@ -1340,7 +1340,8 @@ function DisplayAlphaTab(alphanotes) {
 	//			 scrollElement: alphatabfield
 	//			}		
 		};
-
+	console.log("Alphatab Settings: ", alphatabsettings);
+	
 	var alphatabapi = new alphaTab.AlphaTabApi(alphatabfield, alphatabsettings);
 	alphatabapi.scoreLoaded.on( (score) => {
 			console.log("Score loaded");
