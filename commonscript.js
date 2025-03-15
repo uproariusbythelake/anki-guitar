@@ -1320,6 +1320,7 @@ function DisplayAlphaTab(alphanotes) {
 	var alphatabfield = document.getElementById('alphaTab');
 	console.log("Alphatab innerHTML default: " + alphatabfield.innerHTML);
 	alphatabfield.innerHTML += alphanotes;
+	console.log("Alphatab innerHTML" + alphatabfield.innerHTML);
 	var alphatabsettings = {
 				scale: 0.8,
 				staves: {
