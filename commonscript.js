@@ -270,29 +270,30 @@ for (i=0; i < pattern.length; i += 1) {
 
 		// Determine note beat duration
 		var beatduration = 1;
+		var alphatabduration = "q";
 		switch (tempnotearr[1]) {
-			case "1n":		beatduration = 4; break;
-			case "2n":		beatduration = 2; break;
-			case "2n.":	beatduration = 3; break;
-			case "4n":		beatduration = 1; break;
-			case "4n.":	beatduration = 1.5; break;
-			case "4t":		beatduration = .66667; break;
-			case "4t.":	beatduration = 1; break;
-			case "8n":		beatduration = .5; break;
-			case "8n.":	beatduration = .75; break;
-			case "8t":		beatduration = .33334; break;
-			case "8t.":	beatduration = .5; break;
-			case "16n":	beatduration = .25; break;
-			case "16n.":	beatduration = .375; break;
-			case "16t":	beatduration = .16667; break;
-			case "16t.":	beatduration = .25; break;
-			case "32n":	beatduration = .125; break;
-			case "32n.":	beatduration = .1875; break;
-			case "32t":	beatduration = .08334; break;
-			case "32t.":	beatduration = .125; break;
-			default:			beatduration = 1;
+			case "1n":		beatduration = 4; alphatabduration = "w"; break;
+			case "2n":		beatduration = 2; alphatabduration = "h";  break;
+			case "2n.":	beatduration = 3; alphatabduration = "hd";  break;
+			case "4n":		beatduration = 1; alphatabduration = "q";  break;
+			case "4n.":	beatduration = 1.5; alphatabduration = "qd";  break;
+			case "4t":		beatduration = .66667; alphatabduration = "qt";  break;
+			case "4t.":	beatduration = 1; alphatabduration = "qtd";  break;
+			case "8n":		beatduration = .5; alphatabduration = "e";  break;
+			case "8n.":	beatduration = .75; alphatabduration = "ed";  break;
+			case "8t":		beatduration = .33334; alphatabduration = "et";  break;
+			case "8t.":	beatduration = .5; alphatabduration = "etd";  break;
+			case "16n":	beatduration = .25; alphatabduration = "s";  break;
+			case "16n.":	beatduration = .375; alphatabduration = "sd";  break;
+			case "16t":	beatduration = .16667; alphatabduration = "st";  break;
+			case "16t.":	beatduration = .25; alphatabduration = "std";  break;
+			case "32n":	beatduration = .125; alphatabduration = "t";  break;
+			case "32n.":	beatduration = .1875; alphatabduration = "td";  break;
+			case "32t":	beatduration = .08334; alphatabduration = "tt";  break;
+			case "32t.":	beatduration = .125; alphatabduration = "ttd";  break;
+			default:			beatduration = 1; alphatabduration = "q"; 
 		}
-		patternnotes[i] = [tempnotearr[4], tempnotearr[1], tempnotearr[0], tempnotearr[2], tempnotearr[3], beatduration];
+		patternnotes[i] = [tempnotearr[4], tempnotearr[1], tempnotearr[0], tempnotearr[2], tempnotearr[3], beatduration, alphatabduration];
 		console.log ("Pattern Note: ", patternnotes[i]);  
 }
 
@@ -1258,6 +1259,7 @@ var tabtable2 = document.getElementById("scaletab2");
 var tabstrings = ["E", "B", "G", "D", "A", "E"];
 var alphanotes = ":4";
 
+
 if (tabtable1 != null) {
 	while(tabtable1.rows.length > 0) {
 		tabtable1.deleteRow(0);
@@ -1300,12 +1302,13 @@ if (tabtable1 != null) {
 
 	for (var c=1; c < pattern.length + 1; c += 1) {
 		var notenum = patternnotes[c-1][0] - 1 + scalestartindex;
+		var noteduration = patternnotes[c-1][1];
 		var note = patternnotes[c-1][2];
 		var rownum = patternnotes[c-1][3] - 1;
 		var tabposfretval = patternnotes[c-1][4]; 
 		tabtable1.rows[rownum].cells[c].innerHTML = tabposfretval + "<sup>" + note + "</sup><sub>"; 
-		alphanotes += " " + tabposfretval + "." + patternnotes[c-1][3];
-		alphanotes += (c % 4 === 0) ? " | " : "";
+		alphanotes += " " + tabposfretval + "." + patternnotes[c-1][3] + "." + patternnotes[c-1][6];
+		alphanotes += (c % patterncellsize === 0) ? " | " : "";
 		if (tabtable2 != null) {
 		   if ((patternscaledegree == 0) && ((patternrepeats) || (patternid == 0))) {		
 			tabtable2.rows[rownum].cells[pattern.length + 1 - c].innerHTML = tabposfretval + "<sup>" + note + "</sup>";  
