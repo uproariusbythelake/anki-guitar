@@ -1326,6 +1326,7 @@ function DisplayAlphaTab(alphanotes) {
 	console.log("Alphatab innerHTML" + alphatabfield.innerHTML);
 	var alphatabsettings = {
 				scale: 0.8,
+				keySignature: scalekey,
 				staves: {
 			   id: 'tab',
 			   additionalSettings: {
