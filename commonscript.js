@@ -1258,6 +1258,7 @@ var tabtable1 = document.getElementById("scaletab1");
 var tabtable2 = document.getElementById("scaletab2");
 var tabstrings = ["E", "B", "G", "D", "A", "E"];
 var alphanotes = ":4";
+var alphanotesrev = "";
 
 
 if (tabtable1 != null) {
@@ -1312,8 +1313,11 @@ if (tabtable1 != null) {
 		if (tabtable2 != null) {
 		   if ((patternscaledegree == 0) && ((patternrepeats) || (patternid == 0))) {		
 			tabtable2.rows[rownum].cells[pattern.length + 1 - c].innerHTML = tabposfretval + "<sup>" + note + "</sup>";  
+			alphanotesrev = (c % patterncellsize === 0) ? " | " + alphanotesrev : alphanotesrev;
+			alphanotesrev = tabposfretval + "." + patternnotes[c-1][3] + "." + patternnotes[c-1][6] + " " + alphanotesrev;
 		   }
 		}
+		alphanotes += alphanotesrev;
 	}
 	DisplayAlphaTab(alphanotes);
 }
@@ -1326,9 +1330,9 @@ function DisplayAlphaTab(alphanotes) {
 	console.log("Alphatab innerHTML" + alphatabfield.innerHTML);
 	var alphatabsettings = {
 				scale: 0.8,
-				ks: scalekey,
 				staves: {
-			   id: 'tab',
+				id: 'tab',
+				keysignature: scalekey,
 			   additionalSettings: {
 				   rhythm: true,
 				   rhythmHeight: 50
