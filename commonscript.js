@@ -1318,8 +1318,8 @@ if (tabtable1 != null) {
 			alphanotesrev = tabposfretval + "." + patternnotes[c-1][3] + "." + patternnotes[c-1][6] + " " + alphanotesrev;
 		   }
 		}
-		alphanotes += alphanotesrev;
 	}
+	alphanotes += alphanotesrev;
 	DisplayAlphaTab(alphanotes);
 }
 
