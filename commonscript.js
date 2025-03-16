@@ -1319,7 +1319,7 @@ if (tabtable1 != null) {
 		   }
 		}
 	}
-	alphanotes += alphanotesrev;
+	alphanotes += " | " + alphanotesrev;
 	DisplayAlphaTab(alphanotes);
 }
 
